@@ -35,3 +35,6 @@ Below is a high level overview of the workflow through the application.
 # Deployment
 
 # Credits
+https://ozzmaker.com/add-colour-to-text-in-python/
+https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input
+https://exchangeratesapi.io/
