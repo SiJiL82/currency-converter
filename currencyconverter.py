@@ -3,8 +3,12 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 
 def prompt_for_currency(prompt_text):
-    currency_keys = api.currency_list_dict
-    key_completer = WordCompleter(list(currency_keys.keys()))
+    """
+    Asks the user to choose a currency from the available list.
+    """
+    key_completer = WordCompleter(list(api.currency_list_dict.keys()))
+    print("Start typing to present list of currencies.")
+    print("Press <TAB> and <ENTER> to select a currency")
     user_input = prompt(prompt_text, completer=key_completer)
     print(f"Key chosen: {user_input}")
 
