@@ -7,9 +7,14 @@ def get_api_key():
         return data["apikey"]
 
 APIKEY = get_api_key()
+currency_list = {}
 
 def get_currency_list():
     url = f"http://api.exchangeratesapi.io/v1/symbols?access_key={APIKEY}"
     response = requests.request("GET", url)
-    return response.text
+    global currency_list
+    currency_list = response.text
   
+    
+
+ 
