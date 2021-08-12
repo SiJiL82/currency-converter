@@ -74,7 +74,13 @@ def user_menu_choice():
         except ValueError:
             print("Please enter a valid number value for one of the following options:")
             menu()
-    print(choice)
+    chosen_option = None
+    for option in options:
+        if option["id"] == choice:
+            chosen_option = option
+            break
+    chosen_option["action"]()
+
         
 init()
 menu()
