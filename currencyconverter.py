@@ -76,7 +76,12 @@ options = [
 ]
 
 def init():
+    """
+    Initialises the program
+    """
+    # Get the most recent currency list from the API
     api.get_currency_list()
+    # Print welcome text to the user
     print("Welcome to the Currency Converter.")
     print("Please enter the number value for one of the following options:")
 
