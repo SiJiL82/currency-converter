@@ -40,6 +40,9 @@ def convert_single_value():
     #prompt for input
 
 def convert_file_values():
+    """
+    Converts all values in a specified column in a file to a specified currency
+    """
     print("Enter the file name:")
     #prompt for input
     print("Enter the source column to convert:")
