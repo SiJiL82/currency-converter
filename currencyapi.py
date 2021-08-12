@@ -13,6 +13,10 @@ def get_api_key():
 #Store API key for use in other functions
 APIKEY = get_api_key()
 
+# Global variable to store curency list in
+currency_list = {}
+currency_list_dict = {}
+
 def get_currency_list():
     """
     Pull the latest list of available currencies from the API
@@ -29,7 +33,8 @@ def display_currency_list():
     Prints the available currencies out in a user readable format
     """
     # Get just the symbol list from the currency list string
-    symbols = json.loads(currency_list)["symbols"]
+    global currency_list_dict
+    currency_list_dict = json.loads(currency_list)["symbols"]
     # Counter for number of columns in printed string
     i = 1
     # Number of columns to print
@@ -39,11 +44,11 @@ def display_currency_list():
     print_str = ""
     # Width of each column to print. This is:
     # max key length + spacing + max value length + spacing + colour code escape values
-    column_width = helper.get_max_dict_key_length(symbols) + 2 + helper.get_max_dict_value_length(symbols) + 2 + 20
+    column_width = helper.get_max_dict_key_length(currency_list_dict) + 2 + helper.get_max_dict_value_length(currency_list_dict) + 2 + 20
     # Loop through each symbol to get out the key and value to print to console
-    for symbol in symbols:
+    for currency in currency_list_dict:
         # String for each key and value, with colour formatting around the key
-        str = f"\033[1;32;40m{symbol}\033[0;37;40m: {symbols.get(symbol)}"
+        str = f"\033[1;32;40m{currency}\033[0;37;40m: {currency_list_dict.get(currency)}"
         # If we've appended as many strings as there are columns, reset the columns and start a new line
         if i > num_columns:
             print_str += "\n"
