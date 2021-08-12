@@ -93,6 +93,7 @@ def menu():
     """
     for option in options:
         print(f'\033[1;32;40m{option.get("id")}\033[0;37;40m: {option.get("text")}') 
+    # Add a Quit option after all the others
     print(f'\033[1;32;40m{len(options) + 1}\033[0;37;40m: Quit') 
 
 def user_menu_choice():
