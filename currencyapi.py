@@ -3,6 +3,9 @@ import requests
 import helper 
 
 def get_api_key():
+    """
+    Load the API key from apikey.json and store in variable for later re-use
+    """
     with open("apikey.json") as apikey_file:
         data = json.load(apikey_file)
         return data["apikey"]
