@@ -5,3 +5,4 @@ def get_api_key():
         data = json.load(apikey_file)
         return data["apikey"]
 
+APIKEY = get_api_key()
