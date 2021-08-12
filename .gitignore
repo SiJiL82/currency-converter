@@ -1,0 +1,11 @@
+core.Microsoft*
+core.mongo*
+core.python*
+env.py
+__pycache__/
+*.py[cod]
+creds.json
+
+# Visual Studio cache directory
+.vs/
+.vscode/
