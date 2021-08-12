@@ -20,6 +20,9 @@ def get_currency_list():
     currency_list = response.text
 
 def display_currency_list():
+    """
+    Prints the available currencies out in a user readable format
+    """
     symbols = json.loads(currency_list)["symbols"]
     i = 1
     num_columns = 4
