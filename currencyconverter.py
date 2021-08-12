@@ -82,12 +82,18 @@ def init():
     # Get the most recent currency list from the API
     api.get_currency_list()
     # Print welcome text to the user
-    print("Welcome to the Currency Converter.")
-    print("Please enter the number value for one of the following options:")
+    print("\033[1;33;40mWelcome to the Currency Converter.")
+    print("\033[1;33;40mPlease enter the number value for one of the following options:")
+    # Reset console colour to white
+    print("\033[0;37;40m")
 
 def menu():
+    """
+    Displays all program options to the user
+    """
     for option in options:
-        print(f'{option.get("id")}: {option.get("text")}') 
+        print(f'\033[1;32;40m{option.get("id")}\033[0;37;40m: {option.get("text")}') 
+    print(f'\033[1;32;40m{len(options) + 1}\033[0;37;40m: Quit') 
 
 def user_menu_choice():
     while True:
@@ -97,12 +103,15 @@ def user_menu_choice():
                 choice = int(input_str)
             else:
                 raise ValueError()
-            if 1 <= choice <= len(options):
+            if 1 <= choice <= len(options) + 1:
                 break
             raise ValueError()
         except ValueError:
             print("Please enter a valid number value for one of the following options:")
             menu()
+    if choice == len(options) + 1:
+        print("Exitting.")
+        return
     chosen_option = None
     for option in options:
         if option["id"] == choice:
