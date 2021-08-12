@@ -1,3 +1,5 @@
+import currencyapi as api
+
 def list_currencies():
     print("Available currencies:")
 
@@ -48,8 +50,16 @@ options = [
     }
 ]
 
+def init():
+    api.get_currency_list()
+    print("Welcome to the Currency Converter.")
+    print("Please chose from one of the following options:\n")
+
 def menu():
     for option in options:
         print(f'{option.get("id")}: {option.get("text")}') 
 
+init()
 menu()
+
+#api.display_currency_list()
