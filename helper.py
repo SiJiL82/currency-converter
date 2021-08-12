@@ -5,5 +5,5 @@ def get_max_dict_value_length(dict):
     max = 0
     for value in dict:
         if len(dict[value]) > max:
-            max = len(value)
+            max = len(dict[value])
     return max
