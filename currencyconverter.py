@@ -13,6 +13,9 @@ def prompt_for_currency(prompt_text):
     print(f"Key chosen: {user_input}")
 
 def list_currencies():
+    """
+    Display the list of available currencies in user readable format
+    """
     print("Available currencies:")
     api.display_currency_list()
 
