@@ -11,6 +11,9 @@ APIKEY = get_api_key()
 currency_list = {}
 
 def get_currency_list():
+    """
+    Pull the latest list of available currencies from the API
+    """
     url = f"http://api.exchangeratesapi.io/v1/symbols?access_key={APIKEY}"
     response = requests.request("GET", url)
     global currency_list
