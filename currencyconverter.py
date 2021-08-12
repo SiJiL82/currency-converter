@@ -20,6 +20,9 @@ def list_currencies():
     api.display_currency_list()
 
 def view_exchange_rate():
+    """
+    Get the exchange rate for 2 currencies
+    """
     prompt_for_currency("Enter source currency:")
     #prompt for input
     print("Enter destination currency:")
