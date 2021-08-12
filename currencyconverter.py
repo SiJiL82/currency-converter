@@ -1,11 +1,19 @@
 import currencyapi as api
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+
+def prompt_for_currency(prompt_text):
+    currency_keys = api.currency_list_dict
+    key_completer = WordCompleter(list(currency_keys.keys()))
+    user_input = prompt(prompt_text, completer=key_completer)
+    print(f"Key chosen: {user_input}")
 
 def list_currencies():
     print("Available currencies:")
     api.display_currency_list()
 
 def view_exchange_rate():
-    print("Enter source currency:")
+    prompt_for_currency("Enter source currency:")
     #prompt for input
     print("Enter destination currency:")
     #prompt for input
