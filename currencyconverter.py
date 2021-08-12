@@ -97,27 +97,38 @@ def menu():
     print(f'\033[1;32;40m{len(options) + 1}\033[0;37;40m: Quit') 
 
 def user_menu_choice():
+    """
+    Prompt user to choose one of the program options.
+    Loops until they exit.
+    """
     while True:
         try:
+            # Get the user input
             input_str = input("Choice: ")
+            # Check if input is numerical
             if input_str.isdigit():
                 choice = int(input_str)
             else:
                 raise ValueError()
+            # Check input is valid from the list of available options
             if 1 <= choice <= len(options) + 1:
                 break
             raise ValueError()
         except ValueError:
             print("Please enter a valid number value for one of the following options:")
+            # Re-show the menu if a valid option wasn't shown
             menu()
+    # If last option was chosen, quit            
     if choice == len(options) + 1:
-        print("Exitting.")
+        print("Exiting.")
         return
+    # Compare the input against possible options to pick the one that was chosen
     chosen_option = None
     for option in options:
         if option["id"] == choice:
             chosen_option = option
             break
+    # Call the action function of the chosen option
     chosen_option["action"]()
 
         
