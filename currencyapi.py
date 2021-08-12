@@ -14,7 +14,6 @@ def get_api_key():
 APIKEY = get_api_key()
 
 # Global variable to store curency list in
-currency_list = {}
 currency_list_dict = {}
 
 def get_currency_list():
@@ -25,16 +24,15 @@ def get_currency_list():
     response = requests.request("GET", url)
     # Store API result in the global variable for use in other functions
     # This is a string value that needs converting to be used
-    global currency_list
-    currency_list = response.text
+    currency_list_str = response.text
+    # Get just the symbol list from the currency list string
+    global currency_list_dict
+    currency_list_dict = json.loads(currency_list_str)["symbols"]
 
 def display_currency_list():
     """
     Prints the available currencies out in a user readable format
-    """
-    # Get just the symbol list from the currency list string
-    global currency_list_dict
-    currency_list_dict = json.loads(currency_list)["symbols"]
+    """   
     # Counter for number of columns in printed string
     i = 1
     # Number of columns to print
@@ -61,5 +59,5 @@ def display_currency_list():
     print(f"{print_str}")
 
 # Debugging
-get_currency_list()    
-display_currency_list()
+#get_currency_list()    
+#display_currency_list()
