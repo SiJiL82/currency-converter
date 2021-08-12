@@ -29,6 +29,9 @@ def view_exchange_rate():
     #prompt for input
 
 def convert_single_value():
+    """
+    Converts a single numerical value from one currency to another
+    """
     print("Enter source currency:")
     #prompt for input
     print("Enter destination currency:")
