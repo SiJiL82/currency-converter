@@ -131,7 +131,12 @@ def user_menu_choice():
     # Call the action function of the chosen option
     chosen_option["action"]()
 
-        
-init()
-menu()
-user_menu_choice()
+def main():
+    """
+    Main program call
+    """
+    init()
+    menu()
+    user_menu_choice()
+
+main()    
