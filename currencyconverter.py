@@ -2,6 +2,7 @@ import currencyapi as api
 
 def list_currencies():
     print("Available currencies:")
+    api.display_currency_list()
 
 def view_exchange_rate():
     print("Enter source currency:")
@@ -53,13 +54,28 @@ options = [
 def init():
     api.get_currency_list()
     print("Welcome to the Currency Converter.")
-    print("Please chose from one of the following options:\n")
+    print("Please enter the number value for one of the following options:")
 
 def menu():
     for option in options:
         print(f'{option.get("id")}: {option.get("text")}') 
 
+def user_menu_choice():
+    while True:
+        try:
+            input_str = input("Choice: ")
+            if input_str.isdigit():
+                choice = int(input_str)
+            else:
+                raise ValueError()
+            if 1 <= choice <= len(options):
+                break
+            raise ValueError()
+        except ValueError:
+            print("Please enter a valid number value for one of the following options:")
+            menu()
+    print(choice)
+        
 init()
 menu()
-
-#api.display_currency_list()
+user_menu_choice()
