@@ -1,3 +1,7 @@
+# Colour Variables
+green_text = "\033[1;32;40m"
+white_text = "\033[0;37;40m"
+
 def get_max_dict_value_length(dict):
     """
     Returns the length of the longest value in a dictionary
