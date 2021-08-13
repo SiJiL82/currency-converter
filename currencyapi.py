@@ -59,11 +59,19 @@ def get_exchange_rate(source, destination):
     """
     Displays the exchange rate for the passed in currencies
     """
-    url = f"https://free.currconv.com/api/v7/convert?q={source}_{destination}&compact=ultra&apiKey={APIKEY}"
+    # Set string for provided search
+    lookup = f"{source}_{destination}"
+    # Set string for reverse of search
+    reverse_lookup = f"{destination}_{source}"
+    # Set API request URL
+    url = f"https://free.currconv.com/api/v7/convert?q={lookup},{reverse_lookup}&compact=ultra&apiKey={APIKEY}"
+    # Get the API response
     response = requests.request("GET", url)
     response_object = json.loads(response.text)
-    key = f"{source}_{destination}"
-    print(f"1 {source} is equal to {response_object.get(key)} {destination}")
+    # Display provided search result to user
+    print(f"1 \033[1;32;40m{source}\033[0;37;40m is equal to {response_object.get(lookup)} \033[1;32;40m{destination}\033[0;37;40m")
+    # Display reverse of search to user
+    print(f"1 \033[1;32;40m{destination}\033[0;37;40m is equal to {response_object.get(reverse_lookup)} \033[1;32;40m{source}\033[0;37;40m")
 
 # Debugging
 # get_currency_list()    
