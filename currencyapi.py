@@ -56,13 +56,15 @@ def display_currency_list():
     print(f"{print_str}")
 
 def get_exchange_rate(source, destination):
-    #url = f"http://api.exchangeratesapi.io/v1/latest?access_key={APIKEY}&base={source}&symbols={destination}"
-    url = "https://api.exchangeratesapi.io/v1/latest?access_key=0ad59c0762e230cbd9d500e6522ae0d0&base=USD&symbols=GBP,JPY,EUR"
-    print(url)
+    """
+    Displays the exchange rate for the passed in currencies
+    """
+    url = f"https://free.currconv.com/api/v7/convert?q={source}_{destination}&compact=ultra&apiKey={APIKEY}"
     response = requests.request("GET", url)
     response_object = json.loads(response.text)
-    print(response_object)
+    key = f"{source}_{destination}"
+    print(f"1 {source} is equal to {response_object.get(key)} {destination}")
 
 # Debugging
-get_currency_list()    
-display_currency_list()
+# get_currency_list()    
+# display_currency_list()

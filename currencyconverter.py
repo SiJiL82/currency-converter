@@ -44,10 +44,9 @@ def view_exchange_rate():
     """
     Get the exchange rate for 2 currencies
     """
-    prompt_for_currency("Enter source currency: ")
-    #prompt for input
-    print("Enter destination currency: ")
-    #prompt for input
+    source_currency = prompt_for_currency("Enter source currency: ")
+    destination_currency = prompt_for_currency("Enter destination currency: ")
+    api.get_exchange_rate(source_currency, destination_currency)
 
 def convert_single_value():
     """
