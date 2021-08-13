@@ -67,11 +67,21 @@ def get_exchange_rate(source, destination):
     url = f"https://free.currconv.com/api/v7/convert?q={lookup},{reverse_lookup}&compact=ultra&apiKey={APIKEY}"
     # Get the API response
     response = requests.request("GET", url)
-    response_object = json.loads(response.text)
+    exchange_rate = json.loads(response.text)
+    return exchange_rate
+
+def display_exchange_rate(source, destination, exchange_rate):
+    """
+    Displays the exchange rate from the API in a user readable format
+    """
+    # Set string for provided search
+    lookup = f"{source}_{destination}"
+    # Set string for reverse of search
+    reverse_lookup = f"{destination}_{source}"
     # Display provided search result to user
-    print(f"1 \033[1;32;40m{source}\033[0;37;40m is equal to {response_object.get(lookup)} \033[1;32;40m{destination}\033[0;37;40m")
+    print(f"1 \033[1;32;40m{source}\033[0;37;40m is equal to {exchange_rate.get(lookup)} \033[1;32;40m{destination}\033[0;37;40m")
     # Display reverse of search to user
-    print(f"1 \033[1;32;40m{destination}\033[0;37;40m is equal to {response_object.get(reverse_lookup)} \033[1;32;40m{source}\033[0;37;40m")
+    print(f"1 \033[1;32;40m{destination}\033[0;37;40m is equal to {exchange_rate.get(reverse_lookup)} \033[1;32;40m{source}\033[0;37;40m")
 
 # Debugging
 # get_currency_list()    

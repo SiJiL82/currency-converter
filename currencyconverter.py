@@ -46,7 +46,8 @@ def view_exchange_rate():
     """
     source_currency = prompt_for_currency("Enter source currency: ")
     destination_currency = prompt_for_currency("Enter destination currency: ")
-    api.get_exchange_rate(source_currency, destination_currency)
+    exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
+    api.display_exchange_rate(source_currency, destination_currency, exchange_rate)
 
 def convert_single_value():
     """
