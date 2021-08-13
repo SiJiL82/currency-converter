@@ -28,6 +28,7 @@ def get_currency_list():
     response = requests.request("GET", url)
     # Store API result in the global variable for use in other functions
     global currency_list_dict
+    print(json.loads(response.text))
     currency_list_dict = json.loads(response.text)["results"]
 
 def display_currency_list():
