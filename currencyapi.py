@@ -20,8 +20,12 @@ def get_currency_list():
     url = f"https://free.currconv.com/api/v7/currencies?apiKey={APIKEY}"
     response = requests.request("GET", url)
     # Store API result in the global variable for use in other functions
-    global currency_list_dict
-    currency_list_dict = json.loads(response.text)["results"]
+    try:
+        global currency_list_dict
+        currency_list_dict = json.loads(response.text)["results"]
+    except Exception as e:
+        print("Error:")
+        print(e)
 
 def display_currency_list():
     """
@@ -37,7 +41,7 @@ def display_currency_list():
     # Number of columns to print
     terminal_columns, terminal_rows = shutil.get_terminal_size()
     num_columns = math.floor(terminal_columns / (column_width - 20))
-    
+
     # Empty string to start the printed list with
     print_str = ""
     # Loop through each symbol to get out the key and value to print to console
