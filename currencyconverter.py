@@ -1,4 +1,5 @@
 import currencyapi as api
+import helper
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
@@ -16,9 +17,9 @@ def prompt_for_currency(prompt_text):
     Asks the user to choose a currency from the available list.
     """
     key_completer = WordCompleter(list(api.currency_list_dict.keys()))
-    print("\033[1;34;40mStart typing to present list of currencies.")
-    print("\033[1;34;40mPress <TAB> and <ENTER> to select a currency.")
-    print("\033[1;34;40mNote that all currencies are in UPPERCASE.")
+    print(f"{helper.blue_text}Start typing to present list of currencies.")
+    print(f"{helper.blue_text}Press <TAB> and <ENTER> to select a currency.")
+    print(f"{helper.blue_text}Note that all currencies are in UPPERCASE.")
     prompt_message = [
         ('class:prompt_user', prompt_text)
     ]
@@ -37,7 +38,7 @@ def list_currencies():
     """
     Display the list of available currencies in user readable format
     """
-    print("\033[1;34;40mAvailable currencies: \033[0;37;40m")
+    print(f"{helper.blue_text}Available currencies: \033[0;37;40m")
     api.display_currency_list()
     ui()
 
@@ -105,19 +106,17 @@ def init():
     # Get the most recent currency list from the API
     api.get_currency_list()
     # Print welcome text to the user
-    print("\033[1;34;40mWelcome to the Currency Converter.")
-    print("\033[1;34;40mPlease enter the number value for one of the following options:")
-    # Reset console colour to white
-    print("\033[0;37;40m")
+    print(f"{helper.blue_text}Welcome to the Currency Converter.")
+    
 
 def menu():
     """
     Displays all program options to the user
     """
     for option in options:
-        print(f'\033[1;32;40m{option.get("id")}\033[0;37;40m: {option.get("text")}') 
+        print(f'{helper.green_text}{option.get("id")}{helper.white_text}: {option.get("text")}') 
     # Add a Quit option after all the others
-    print(f'\033[1;32;40m{len(options) + 1}\033[0;37;40m: Quit') 
+    print(f'{helper.green_text}{len(options) + 1}{helper.white_text}: Quit') 
 
 def user_menu_choice():
     """
@@ -159,6 +158,7 @@ def user_menu_choice():
     chosen_option["action"]()
 
 def ui():
+    print(f"{helper.blue_text}Please enter the number value for one of the following options:{helper.white_text}")
     menu()
     user_menu_choice()
 
