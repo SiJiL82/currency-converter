@@ -9,8 +9,16 @@ def prompt_for_currency(prompt_text):
     key_completer = WordCompleter(list(api.currency_list_dict.keys()))
     print("Start typing to present list of currencies.")
     print("Press <TAB> and <ENTER> to select a currency")
-    user_input = prompt(prompt_text, completer=key_completer)
-    print(f"Key chosen: {user_input}")
+    while True:
+        user_input = prompt(prompt_text, completer=key_completer)
+        try:
+            if user_input in api.currency_list_dict.keys():
+                return user_input
+            else:
+                raise ValueError
+        except ValueError:
+            print("Please enter a valid currency code.\n")
+    
 
 def list_currencies():
     """
