@@ -42,10 +42,6 @@ def display_currency_list():
     terminal_columns, terminal_rows = shutil.get_terminal_size()
     num_columns = math.floor(terminal_columns / (column_width - 20))
 
-    print(f"TerCols: {terminal_columns}")
-    print(f"NumCols: {num_columns}")
-
-
     # Empty string to start the printed list with
     print_str = ""
     # Loop through each symbol to get out the key and value to print to console
