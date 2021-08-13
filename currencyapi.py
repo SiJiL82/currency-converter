@@ -2,6 +2,8 @@ import json
 import requests
 import helper
 import os
+import shutil
+import math
 if os.path.exists("env.py"):
     import env
 
@@ -27,14 +29,17 @@ def display_currency_list():
     """   
     # Counter for number of columns in printed string
     i = 1
-    # Number of columns to print
-    # TODO: See if we can get the console width, divide it by column_width and make this dynamic
-    num_columns = 3
-    # Empty string to start the printed list with
-    print_str = ""
+
     # Width of each column to print. This is:
     # max key length + spacing + max value length + spacing + colour code escape values
     column_width = helper.get_max_dict_subvalue_length(currency_list_dict, "currencyName") + 2 + helper.get_max_dict_value_length(currency_list_dict) + 2 + 20
+
+    # Number of columns to print
+    terminal_columns, terminal_rows = shutil.get_terminal_size()
+    num_columns = math.floor(terminal_columns / (column_width - 20))
+    
+    # Empty string to start the printed list with
+    print_str = ""
     # Loop through each symbol to get out the key and value to print to console
     for currency in currency_list_dict:
         # String for each key and value, with colour formatting around the key
