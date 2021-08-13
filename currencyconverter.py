@@ -1,6 +1,14 @@
 import currencyapi as api
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.styles import Style
+
+input_prompt_style = Style.from_dict({
+    # User input (default text).
+    '': '#ffffff',
+    # Prompt.
+    'prompt_user': '#ffff00',
+})
 
 def prompt_for_currency(prompt_text):
     """
@@ -9,8 +17,11 @@ def prompt_for_currency(prompt_text):
     key_completer = WordCompleter(list(api.currency_list_dict.keys()))
     print("Start typing to present list of currencies.")
     print("Press <TAB> and <ENTER> to select a currency")
+    prompt_message = [
+        ('class:prompt_user', prompt_text)
+    ]
     while True:
-        user_input = prompt(prompt_text, completer=key_completer)
+        user_input = prompt(prompt_message, style=input_prompt_style, completer=key_completer)
         try:
             if user_input in api.currency_list_dict.keys():
                 return user_input
@@ -31,9 +42,9 @@ def view_exchange_rate():
     """
     Get the exchange rate for 2 currencies
     """
-    prompt_for_currency("Enter source currency:")
+    prompt_for_currency("Enter source currency: ")
     #prompt for input
-    print("Enter destination currency:")
+    print("Enter destination currency: ")
     #prompt for input
 
 def convert_single_value():
@@ -112,7 +123,7 @@ def user_menu_choice():
     while True:
         try:
             # Get the user input
-            input_str = input("Choice: ")
+            input_str = input("\033[1;33;40mChoice: \033[0;37;40m")
             # Check if input is numerical
             if input_str.isdigit():
                 choice = int(input_str)
