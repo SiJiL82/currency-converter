@@ -1,5 +1,6 @@
 import currencyapi as api
 import helper
+import os
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
@@ -105,8 +106,7 @@ def init():
     """
     # Get the most recent currency list from the API
     api.get_currency_list()
-    # Print welcome text to the user
-    print(f"{helper.blue_text}Welcome to the Currency Converter.")
+    
     
 
 def menu():
@@ -158,15 +158,18 @@ def user_menu_choice():
     chosen_option["action"]()
 
 def ui():
+    # Print welcome text to the user
+    print(f"{helper.blue_text}Welcome to the Currency Converter.")
     print(f"{helper.blue_text}Please enter the number value for one of the following options:{helper.white_text}")
     menu()
     user_menu_choice()
-
 
 def main():
     """
     Main program call
     """
+    # Clear the console before starting
+    os.system('cls' if os.name == 'nt' else 'clear')
     init()
     ui()
 
