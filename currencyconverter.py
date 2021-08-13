@@ -39,6 +39,7 @@ def list_currencies():
     """
     print("\033[1;34;40mAvailable currencies: \033[0;37;40m")
     api.display_currency_list()
+    ui()
 
 def view_exchange_rate():
     """
@@ -48,6 +49,7 @@ def view_exchange_rate():
     destination_currency = prompt_for_currency("Enter destination currency: ")
     exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
     api.display_exchange_rate(source_currency, destination_currency, exchange_rate)
+    ui()
 
 def convert_single_value():
     """
@@ -156,12 +158,17 @@ def user_menu_choice():
     # Call the action function of the chosen option
     chosen_option["action"]()
 
+def ui():
+    menu()
+    user_menu_choice()
+
+
 def main():
     """
     Main program call
     """
     init()
-    menu()
-    user_menu_choice()
+    ui()
+
 
 main()    
