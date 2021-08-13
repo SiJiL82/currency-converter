@@ -3,6 +3,7 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
 
+# Style the text for user prompts
 input_prompt_style = Style.from_dict({
     # User input (default text).
     '': '#ffffff',
@@ -15,8 +16,8 @@ def prompt_for_currency(prompt_text):
     Asks the user to choose a currency from the available list.
     """
     key_completer = WordCompleter(list(api.currency_list_dict.keys()))
-    print("Start typing to present list of currencies.")
-    print("Press <TAB> and <ENTER> to select a currency")
+    print("\033[1;34;40mStart typing to present list of currencies.")
+    print("\033[1;34;40mPress <TAB> and <ENTER> to select a currency")
     prompt_message = [
         ('class:prompt_user', prompt_text)
     ]
@@ -35,7 +36,7 @@ def list_currencies():
     """
     Display the list of available currencies in user readable format
     """
-    print("Available currencies:")
+    print("\033[1;34;40mAvailable currencies: \033[0;37;40m")
     api.display_currency_list()
 
 def view_exchange_rate():
@@ -101,8 +102,8 @@ def init():
     # Get the most recent currency list from the API
     api.get_currency_list()
     # Print welcome text to the user
-    print("\033[1;33;40mWelcome to the Currency Converter.")
-    print("\033[1;33;40mPlease enter the number value for one of the following options:")
+    print("\033[1;34;40mWelcome to the Currency Converter.")
+    print("\033[1;34;40mPlease enter the number value for one of the following options:")
     # Reset console colour to white
     print("\033[0;37;40m")
 
@@ -123,10 +124,14 @@ def user_menu_choice():
     while True:
         try:
             # Get the user input
-            input_str = input("\033[1;33;40mChoice: \033[0;37;40m")
+            prompt_message = [
+                ('class:prompt_user', "Choice: ")
+            ]
+            user_input = prompt(prompt_message, style=input_prompt_style)
+
             # Check if input is numerical
-            if input_str.isdigit():
-                choice = int(input_str)
+            if user_input.isdigit():
+                choice = int(user_input)
             else:
                 raise ValueError()
             # Check input is valid from the list of available options
