@@ -1,6 +1,7 @@
 import currencyapi as api
 import helper
 import os
+import shutil
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
@@ -173,5 +174,6 @@ def main():
     init()
     ui()
 
+print(shutil.get_terminal_size())
 
 main()    
