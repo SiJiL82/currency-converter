@@ -5,16 +5,7 @@ import os
 if os.path.exists("env.py"):
     import env
 
-def get_api_key():
-    """
-    Load the API key from apikey.json and store in variable for later re-use
-    """
-    with open("apikey.json") as apikey_file:
-        data = json.load(apikey_file)
-        return data["apikey"]
-
 #Store API key for use in other functions
-#APIKEY = get_api_key()
 APIKEY = os.environ.get("APIKEY")
 
 # Global variable to store curency list in
