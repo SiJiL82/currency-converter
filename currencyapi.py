@@ -1,6 +1,9 @@
 import json
 import requests
-import helper 
+import helper
+import os
+if os.path.exists("env.py"):
+    import env
 
 def get_api_key():
     """
@@ -11,11 +14,8 @@ def get_api_key():
         return data["apikey"]
 
 #Store API key for use in other functions
-APIKEY = get_api_key()
-
-# Colour Variables
-green_text = "\033[1;32;40m"
-white_text = "\033[0;37;40m"
+#APIKEY = get_api_key()
+APIKEY = os.environ.get("APIKEY")
 
 # Global variable to store curency list in
 currency_list_dict = {}
@@ -47,7 +47,7 @@ def display_currency_list():
     # Loop through each symbol to get out the key and value to print to console
     for currency in currency_list_dict:
         # String for each key and value, with colour formatting around the key
-        str = f"{green_text}{currency}{white_text}: {currency_list_dict.get(currency)['currencyName']}"
+        str = f"{helper.green_text}{currency}{helper.white_text}: {currency_list_dict.get(currency)['currencyName']}"
         # If we've appended as many strings as there are columns, reset the columns and start a new line
         if i > num_columns:
             print_str += "\n"
@@ -83,9 +83,9 @@ def display_exchange_rate(source, destination, exchange_rate):
     # Set string for reverse of search
     reverse_lookup = f"{destination}_{source}"
     # Display provided search result to user
-    print(f"1 {green_text}{source}{white_text} is equal to {exchange_rate.get(lookup)} {green_text}{destination}{white_text}")
+    print(f"1 {helper.green_text}{source}{helper.white_text} is equal to {exchange_rate.get(lookup)} {helper.green_text}{destination}{helper.white_text}")
     # Display reverse of search to user
-    print(f"1 {green_text}{destination}{white_text} is equal to {exchange_rate.get(reverse_lookup)} {green_text}{source}{white_text}")
+    print(f"1 {helper.green_text}{destination}{helper.white_text} is equal to {exchange_rate.get(reverse_lookup)} {helper.green_text}{source}{helper.white_text}")
 
 # Debugging
 # get_currency_list()    
