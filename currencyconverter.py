@@ -17,7 +17,8 @@ def prompt_for_currency(prompt_text):
     """
     key_completer = WordCompleter(list(api.currency_list_dict.keys()))
     print("\033[1;34;40mStart typing to present list of currencies.")
-    print("\033[1;34;40mPress <TAB> and <ENTER> to select a currency")
+    print("\033[1;34;40mPress <TAB> and <ENTER> to select a currency.")
+    print("\033[1;34;40mNote that all currencies are in UPPERCASE.")
     prompt_message = [
         ('class:prompt_user', prompt_text)
     ]
