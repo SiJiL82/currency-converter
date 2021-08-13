@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
     
     function run_python_script() {
         try {
-            let pyshell = new PythonShell('run.py');
+            let pyshell = new PythonShell('currencyconverter.py');
 
             socket.on('disconnect', () =>  {
                 console.log("Socket Disconnected");
