@@ -78,15 +78,29 @@ def display_exchange_rate(source, destination, exchange_rate):
     """
     Displays the exchange rate from the API in a user readable format
     """
-    # Set string for provided search
+    # Set key for provided search
     lookup = f"{source}_{destination}"
-    # Set string for reverse of search
+    # Set key for reverse of search
     reverse_lookup = f"{destination}_{source}"
     # Display provided search result to user
     print(f"1 {helper.green_text}{source}{helper.white_text} is equal to {exchange_rate.get(lookup)} {helper.green_text}{destination}{helper.white_text}")
     # Display reverse of search to user
     print(f"1 {helper.green_text}{destination}{helper.white_text} is equal to {exchange_rate.get(reverse_lookup)} {helper.green_text}{source}{helper.white_text}")
 
+def convert_currency(source, destination, amount, exchange_rate):
+    """
+    Converts the supplied amount to the destination currency and prints result in user readable format
+    """
+    # Set key for the provided search
+    lookup = f"{source}_{destination}"
+    # Get the searched exchange rate from the passed in rates
+    rate = exchange_rate.get(lookup)
+    # Calculate the exchanged value
+    amount_destination = amount * rate
+    # Display to user
+    print(f"{amount} {helper.green_text}{source}{helper.white_text} = {amount_destination} {helper.green_text}{destination}{helper.white_text}")
+
 # Debugging
 # get_currency_list()    
 # display_currency_list()
+# convert_currency("USD", "GBP", 5, {'USD_GBP': 0.723105, 'GBP_USD': 1.384131})

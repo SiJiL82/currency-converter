@@ -58,11 +58,24 @@ def convert_single_value():
     """
     Converts a single numerical value from one currency to another
     """
-    print("Enter source currency:")
-    #prompt for input
-    print("Enter destination currency:")
-    #prompt for input
-    print("Enter value to convert:")
+    source_currency = prompt_for_currency("Enter source currency: ")
+    destination_currency = prompt_for_currency("Enter destination currency: ")
+    exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
+
+    prompt_message = [
+        ('class:prompt_user', "Enter value to convert: ")
+    ]
+    while True:
+        user_input = prompt(prompt_message, style=input_prompt_style)
+        try:
+            if user_input.isdigit():
+                convert_value = float(user_input)
+                break
+            else:
+                raise ValueError()
+        except ValueError:
+            print("Please enter a valid currency value to convert.")
+    api.convert_currency(source_currency, destination_currency, convert_value, exchange_rate)
     #prompt for input
 
 def convert_file_values():
