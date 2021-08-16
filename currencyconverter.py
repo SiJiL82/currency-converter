@@ -42,6 +42,7 @@ def list_currencies():
     """
     print(f"{helper.blue_text}Available currencies: \033[0;37;40m")
     api.display_currency_list()
+    print("\n")
     ui()
 
 def view_exchange_rate():
@@ -52,6 +53,7 @@ def view_exchange_rate():
     destination_currency = prompt_for_currency("Enter destination currency: ")
     exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
     api.display_exchange_rate(source_currency, destination_currency, exchange_rate)
+    print("\n")
     ui()
 
 def convert_single_value():
@@ -76,7 +78,8 @@ def convert_single_value():
         except ValueError:
             print("Please enter a valid currency value to convert.")
     api.convert_currency(source_currency, destination_currency, convert_value, exchange_rate)
-    #prompt for input
+    print("\n")
+    ui()
 
 def convert_file_values():
     """
