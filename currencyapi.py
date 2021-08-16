@@ -119,5 +119,4 @@ def get_currency_symbol(key):
 # Debugging
 # get_currency_list()    
 # display_currency_list()
-get_currency_list()
-convert_currency("CLF", "GBP", 5, {'CLF_GBP': 0.723105, 'GBP_USD': 1.384131})
+# convert_currency("CLF", "GBP", 5, {'CLF_GBP': 0.723105, 'GBP_USD': 1.384131})
