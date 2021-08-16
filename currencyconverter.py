@@ -174,6 +174,6 @@ def main():
     init()
     ui()
 
-print(shutil.get_terminal_size())
-
+#print(shutil.get_terminal_size())
+#columns = 80, lines = 24
 main()    
