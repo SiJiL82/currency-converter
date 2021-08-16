@@ -183,7 +183,6 @@ def user_menu_choice():
 
 def ui():
     # Print welcome text to the user
-    print(f"{helper.blue_text}Welcome to the Currency Converter.")
     print(f"{helper.blue_text}Please enter the number value for one of the following options:{helper.white_text}")
     menu()
     user_menu_choice()
@@ -195,6 +194,7 @@ def main():
     # Clear the console before starting
     os.system('cls' if os.name == 'nt' else 'clear')
     init()
+    print(f"{helper.blue_text}Welcome to the Currency Converter.")
     ui()
 
 #print(shutil.get_terminal_size())
