@@ -14,6 +14,13 @@ input_prompt_style = Style.from_dict({
     'prompt_user': '#ffff00',
 })
 
+def press_enter_to_continue():
+    while True:
+        input(f"{helper.blue_text}Press Enter to go back to the main menu.")
+        break
+    print("\n")
+    ui()
+
 def prompt_for_currency(prompt_text):
     """
     Asks the user to choose a currency from the available list.
@@ -42,8 +49,7 @@ def list_currencies():
     """
     print(f"{helper.blue_text}Available currencies: \033[0;37;40m")
     api.display_currency_list()
-    print("\n")
-    ui()
+    press_enter_to_continue()
 
 def view_exchange_rate():
     """
@@ -53,8 +59,7 @@ def view_exchange_rate():
     destination_currency = prompt_for_currency("Enter destination currency: ")
     exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
     api.display_exchange_rate(source_currency, destination_currency, exchange_rate)
-    print("\n")
-    ui()
+    press_enter_to_continue()
 
 def convert_single_value():
     """
@@ -78,8 +83,7 @@ def convert_single_value():
         except ValueError:
             print("Please enter a valid currency value to convert.")
     api.convert_currency(source_currency, destination_currency, convert_value, exchange_rate)
-    print("\n")
-    ui()
+    press_enter_to_continue()
 
 def convert_file_values():
     """
@@ -93,6 +97,7 @@ def convert_file_values():
     #prompt for input
     print("Enter the destination column to enter the new values into:")
     #prompt for input
+    press_enter_to_continue()
 
 options = [
     {
@@ -124,8 +129,6 @@ def init():
     # Get the most recent currency list from the API
     api.get_currency_list()
     
-    
-
 def menu():
     """
     Displays all program options to the user
