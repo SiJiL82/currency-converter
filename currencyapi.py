@@ -13,11 +13,14 @@ APIKEY = os.environ.get("APIKEY")
 # Global variable to store curency list in
 currency_list_dict = {}
 
+#Global variable for API base URL
+api_url = "https://api.currconv.com/api/v7"
+
 def get_currency_list():
     """
     Pull the latest list of available currencies from the API
     """
-    url = f"https://api.currconv.com/api/v7/currencies?apiKey={APIKEY}"
+    url = f"{api_url}/currencies?apiKey={APIKEY}"
     response = requests.request("GET", url)
     # Store API result in the global variable for use in other functions
     try:
@@ -68,7 +71,7 @@ def get_exchange_rate(source, destination):
     # Set string for reverse of search
     reverse_lookup = f"{destination}_{source}"
     # Set API request URL
-    url = f"https://free.currconv.com/api/v7/convert?q={lookup},{reverse_lookup}&compact=ultra&apiKey={APIKEY}"
+    url = f"{api_url}/convert?q={lookup},{reverse_lookup}&compact=ultra&apiKey={APIKEY}"
     # Get the API response
     response = requests.request("GET", url)
     exchange_rate = json.loads(response.text)
