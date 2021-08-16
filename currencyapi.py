@@ -98,8 +98,14 @@ def convert_currency(source, destination, amount, exchange_rate):
     # Calculate the exchanged value
     amount_destination = amount * rate
     # Get currency symbols for source and destination currencies
-    source_currency_symbol = currency_list_dict.get(source)["currencySymbol"]
-    destination_currency_symbol = currency_list_dict.get(destination)["currencySymbol"]
+    if "currencySymbol" in currency_list_dict.get(source):
+        source_currency_symbol = currency_list_dict.get(source)["currencySymbol"]
+    else:
+        source_currency_symbol = ""
+    if "currencySymbol" in currency_list_dict.get(destination):
+        destination_currency_symbol = currency_list_dict.get(destination)["currencySymbol"]
+    else:
+        destination_currency_symbol = ""
     # Display to user
     print(f"{source_currency_symbol}{amount} {helper.green_text}{source}{helper.white_text} = {destination_currency_symbol}{amount_destination} {helper.green_text}{destination}{helper.white_text}")
 
