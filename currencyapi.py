@@ -17,8 +17,7 @@ def get_currency_list():
     """
     Pull the latest list of available currencies from the API
     """
-    url = f"https://free.currconv.com/api/v7/currencies?apiKey={APIKEY}"
-    print(url)
+    url = f"https://api.currconv.com/api/v7/currencies?apiKey={APIKEY}"
     response = requests.request("GET", url)
     # Store API result in the global variable for use in other functions
     try:
