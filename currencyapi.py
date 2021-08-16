@@ -97,10 +97,14 @@ def convert_currency(source, destination, amount, exchange_rate):
     rate = exchange_rate.get(lookup)
     # Calculate the exchanged value
     amount_destination = amount * rate
+    # Get currency symbols for source and destination currencies
+    source_currency_symbol = currency_list_dict.get(source)["currencySymbol"]
+    destination_currency_symbol = currency_list_dict.get(destination)["currencySymbol"]
     # Display to user
-    print(f"{amount} {helper.green_text}{source}{helper.white_text} = {amount_destination} {helper.green_text}{destination}{helper.white_text}")
+    print(f"{source_currency_symbol}{amount} {helper.green_text}{source}{helper.white_text} = {destination_currency_symbol}{amount_destination} {helper.green_text}{destination}{helper.white_text}")
 
 # Debugging
 # get_currency_list()    
 # display_currency_list()
-# convert_currency("USD", "GBP", 5, {'USD_GBP': 0.723105, 'GBP_USD': 1.384131})
+get_currency_list()
+convert_currency("CLF", "GBP", 5, {'CLF_GBP': 0.723105, 'GBP_USD': 1.384131})
