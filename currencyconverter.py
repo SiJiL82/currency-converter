@@ -19,6 +19,7 @@ def press_enter_to_continue():
     Loop until user presses Enter key, rather than jumping straight back to the menu.
     Makes it easier for user to see text returned by their operation.
     """
+    print("test")
     while True:
         input(f"{helper.blue_text}Press Enter to go back to the main menu.")
         break
