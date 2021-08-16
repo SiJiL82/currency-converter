@@ -165,7 +165,7 @@ def user_menu_choice():
                 break
             raise ValueError()
         except ValueError:
-            print("Please enter a valid number value for one of the following options:")
+            print(f"{helper.blue_text}Please enter a valid number value for one of the following options:")
             # Re-show the menu if a valid option wasn't shown
             menu()
     # If last option was chosen, quit            
