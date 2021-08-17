@@ -106,13 +106,29 @@ def convert_file_values():
         try:
             if os.path.isfile(filename) and helper.compare_string_caseinsensitive(".csv", os.path.splitext(filename)[1]):
                 break
+            else:
+                raise ValueError
         # Print error message if not
-        except:
-            print(f"{helper.blue_text}Please enter a valid file name, or {helper.white_text}q {helper.blue_text} to cancel")
+        except ValueError:
+            print(f"{helper.blue_text}Please enter a valid file name, or {helper.white_text}q {helper.blue_text}to cancel")
+    # Prompt user to enter the column to convert
     prompt_message = [
         ('class:prompt_user', "Enter the column header containing the data you want to convert: ")
     ]
-    source_column_name = prompt(prompt_message, style=input_prompt_style)
+    while True:
+        source_column_name = prompt(prompt_message, style=input_prompt_style)
+        # Check if user has pressed "q" to cancel and go back to the main menu
+        if source_column_name == "q":
+            press_enter_to_continue()
+        # Check if the column provided exists in the file
+        try:
+            if helper.check_csv_column_exists(filename, source_column_name):
+                break
+            else:
+                raise ValueError
+        # Print error message if not
+        except ValueError:
+            print(f"{helper.blue_text}Please enter a valid column name, or {helper.white_text}q {helper.blue_text}to cancel")
     
     source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
     destination_currency = prompt_for_currency("Enter the currency to convert to: ")
