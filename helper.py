@@ -65,3 +65,13 @@ def compare_string_caseinsensitive(string1, string2):
         return True
     else:
         return False
+
+def check_csv_column_exists(file_name, column_name):
+    """
+    Uses Pandas module to open a CSV and check if supplied column exists
+    """
+    csv = pd.read_csv(file_name)
+    if column_name in csv.columns:
+        return True
+    else:
+        return False
