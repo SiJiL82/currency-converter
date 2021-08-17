@@ -38,7 +38,7 @@ def prompt_for_currency(prompt_text):
     while True:
         user_input = prompt(prompt_message, style=input_prompt_style, completer=key_completer)
         try:
-            if user_input in api.currency_list_dict.keys():
+            if api.check_currency_in_list(user_input):
                 return user_input
             else:
                 raise ValueError
@@ -129,8 +129,29 @@ def convert_file_values():
         # Print error message if not
         except ValueError:
             print(f"{helper.blue_text}Please enter a valid column name, or {helper.white_text}q {helper.blue_text}to cancel")
-    
-    source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
+    # Check if the column provided is a currency name
+    if api.check_currency_in_list(source_column_name.upper()):
+        print(f"{helper.blue_text}Column name supplied matches a currency.")
+        print(f"Do you wish to set the source currency to this value {helper.green_text}{source_column_name.upper()}{helper.blue_text}?{helper.white_text}")
+        prompt_message = [
+            ('class:prompt_user', "y/n: ")
+        ]
+        # If it is, check if user wants to use it as the source currency
+        while True:
+            user_input = prompt(prompt_message, style=input_prompt_style)
+            try:
+                if user_input.lower() == "y":
+                    source_currency = source_column_name.upper()
+                    break
+                elif user_input.lower() == "n":
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print(f"{helper.blue_text}Please enter a valid response: ")
+    # If not a valid currency, or user chose not to use it, prompt for source currency.
+    else:
+        source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
     destination_currency = prompt_for_currency("Enter the currency to convert to: ")
     source_data = helper.get_csv_column(filename, source_column_name)
     exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
