@@ -92,7 +92,7 @@ def display_exchange_rate(source, destination, exchange_rate):
 
 def convert_currency(source, destination, amount, exchange_rate):
     """
-    Converts the supplied amount to the destination currency and prints result in user readable format
+    Converts the supplied amount to the destination currency
     """
     # Set key for the provided search
     lookup = f"{source}_{destination}"
@@ -103,6 +103,9 @@ def convert_currency(source, destination, amount, exchange_rate):
     return amount_destination
 
 def display_converted_currency(source, destination, amount, amount_converted):
+    """
+    Displays the converted currency results in a user readable format
+    """
     # Get currency symbols for source and destination currencies
     source_currency_symbol = get_currency_symbol(source)
     destination_currency_symbol = get_currency_symbol(destination)
