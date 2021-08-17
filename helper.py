@@ -56,3 +56,12 @@ def save_csv(file_name, file):
     Uses Pandas module to save a loaded CSV to file on disk
     """
     file.to_csv(file_name, index=False)
+
+def compare_string_caseinsensitive(string1, string2):
+    """
+    Compare 2 strings with no case sensitivity
+    """
+    if string1.casefold() == string2.casefold:
+        return True
+    else:
+        return False
