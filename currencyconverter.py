@@ -152,16 +152,29 @@ def convert_file_values():
     # If not a valid currency, or user chose not to use it, prompt for source currency.
     else:
         source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
+    # Prompt user for destination currency to convert to
     destination_currency = prompt_for_currency("Enter the currency to convert to: ")
+    # Get existing data from the CSV
     source_data = helper.get_csv_column(filename, source_column_name)
+    # Get the exchange rate for the supplied currencies
     exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
+    # Convert the data
     print(f"{helper.blue_text}Writing converted data to file...{helper.white_text}")
     converted_data_arr = []
     for data in source_data:
+        # Check the data is a number and can be converted
+        if not helper.is_number(data):
+            print(f"{helper.blue_text}Supplied data is not numerical. Aborting conversion.{helper.white_text}")
+            # Go back to main menu. This will break out of the current code loop when the program is exited.
+            press_enter_to_continue()
+        # If data is a valid number, convert it using the exchange rate already stored.
         converted_data = api.convert_currency(source_currency, destination_currency, data, exchange_rate)
+        # Add the converted data to the array of new data
         converted_data_arr.append(converted_data)
+    # Add the new column to the CSV and save it
     helper.add_csv_column(filename, destination_currency, converted_data_arr)
     print(f"{helper.blue_text}File updated.{helper.white_text}")
+    # Return to main menu
     press_enter_to_continue()
 
 options = [
