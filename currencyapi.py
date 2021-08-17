@@ -123,6 +123,15 @@ def get_currency_symbol(key):
     else:
         return ""
 
+def check_currency_in_list(key):
+    """
+    Checks if supplied currency exists in the API currency list
+    """
+    if key in currency_list_dict.keys():
+        return True
+    else:
+        return False
+
 # Debugging
 # get_currency_list()    
 # display_currency_list()
