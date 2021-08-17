@@ -79,28 +79,33 @@ def convert_single_value():
         user_input = prompt(prompt_message, style=input_prompt_style)
         try:
             if user_input.isdigit():
-                convert_value = float(user_input)
+                convert_amount = float(user_input)
                 break
             else:
                 raise ValueError()
         except ValueError:
             print("Please enter a valid currency value to convert.")
-    api.convert_currency(source_currency, destination_currency, convert_value, exchange_rate)
+    converted_amount = api.convert_currency(source_currency, destination_currency, convert_amount, exchange_rate)
+    api.display_converted_currency(source_currency, destination_currency, convert_amount, converted_amount)
     press_enter_to_continue()
 
 def convert_file_values():
     """
     Converts all values in a specified column in a file to a specified currency
     """
-    print("Enter the file name:")
-    #prompt for input
-    print("Enter the source column to convert:")
-    #prompt for input
-    print("Enter the currency to convert to:")
-    #prompt for input
-    print("Enter the destination column to enter the new values into:")
-    #prompt for input
-    press_enter_to_continue()
+    prompt_message = [
+        ('class:prompt_user', "Enter the path to the file containing the data you want to convert: ")
+    ]
+    filename = prompt(prompt_message, style=input_prompt_style)
+    prompt_message = [
+        ('class:prompt_user', "Enter the column header containing the data you want to convert: ")
+    ]
+    source_column_name = prompt(prompt_message, style=input_prompt_style)
+    source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
+    destination_currency = prompt_for_currency("Enter the currency to convert to: ")
+    source_data = helper.get_csv_column(filename, source_column_name)
+    converted_data = []
+
 
 options = [
     {
