@@ -38,7 +38,21 @@ def get_max_dict_subvalue_length(dict, key_name):
 
 def get_csv_column(file_name, column_name):
     """
-    Uses Panda module to load a CSV and return a specified column as a list
+    Uses Pandas module to load a CSV and return a specified column as a list
     """
     csv = pd.read_csv(file_name)
     return csv[column_name]
+
+def add_csv_column(file_name, column_name, column_data):
+    """
+    Uses Pandas module to load a CSV, add a new column to the end and insert the supplied data
+    """
+    csv = pd.read_csv(file_name)
+    csv[column_name] = column_data
+    save_csv(file_name, csv)
+
+def save_csv(file_name, file):
+    """
+    Uses Pandas module to save a loaded CSV to file on disk
+    """
+    file.to_csv(file_name, index=False)

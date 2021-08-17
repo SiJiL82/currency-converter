@@ -104,8 +104,15 @@ def convert_file_values():
     source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
     destination_currency = prompt_for_currency("Enter the currency to convert to: ")
     source_data = helper.get_csv_column(filename, source_column_name)
-    converted_data = []
-
+    exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
+    print(f"{helper.blue_text}Writing converted data to file...{helper.white_text}")
+    converted_data_arr = []
+    for data in source_data:
+        converted_data = api.convert_currency(source_currency, destination_currency, data, exchange_rate)
+        converted_data_arr.append(converted_data)
+    helper.add_csv_column(filename, destination_currency, converted_data_arr)
+    print(f"{helper.blue_text}File updated.{helper.white_text}")
+    press_enter_to_continue()
 
 options = [
     {
