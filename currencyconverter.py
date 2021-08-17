@@ -93,14 +93,27 @@ def convert_file_values():
     """
     Converts all values in a specified column in a file to a specified currency
     """
+    # Prompt user to enter a path to a CSV file
     prompt_message = [
-        ('class:prompt_user', "Enter the path to the file containing the data you want to convert: ")
+        ('class:prompt_user', "Enter the path to the CSV file containing the data you want to convert: ")
     ]
-    filename = prompt(prompt_message, style=input_prompt_style)
+    while True:        
+        filename = prompt(prompt_message, style=input_prompt_style)
+        # Check if user has pressed "q" to cancel and go back to the main menu
+        if filename == "q":
+            press_enter_to_continue()
+        # Check if the file provided exists, and is a .csv
+        try:
+            if os.path.isfile(filename) and helper.compare_string_caseinsensitive(".csv", os.path.splitext(filename)[1]):
+                break
+        # Print error message if not
+        except:
+            print(f"{helper.blue_text}Please enter a valid file name, or {helper.white_text}q {helper.blue_text} to cancel")
     prompt_message = [
         ('class:prompt_user', "Enter the column header containing the data you want to convert: ")
     ]
     source_column_name = prompt(prompt_message, style=input_prompt_style)
+    
     source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
     destination_currency = prompt_for_currency("Enter the currency to convert to: ")
     source_data = helper.get_csv_column(filename, source_column_name)
@@ -182,7 +195,7 @@ def user_menu_choice():
     # If last option was chosen, quit            
     if choice == len(options) + 1:
         print("Exiting.")
-        return
+        raise SystemExit
     # Compare the input against possible options to pick the one that was chosen
     chosen_option = None
     for option in options:
