@@ -75,3 +75,17 @@ def check_csv_column_exists(file_name, column_name):
         return True
     else:
         return False
+
+def is_number(value):
+    """
+    Check if the supplied value (usually a string) can be converted to an int or float
+    """
+    try:
+        float(value)
+        return True
+    except ValueError:
+        try:
+            int(value)
+            return True
+        except ValueError:
+            return False
