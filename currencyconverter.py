@@ -13,6 +13,7 @@ input_prompt_style = Style.from_dict({
     'prompt_user': '#ffff00',
 })
 
+
 def press_enter_to_continue():
     """
     Loop until user presses Enter key, rather than jumping straight back to the menu.
@@ -22,6 +23,7 @@ def press_enter_to_continue():
         input(f"{helper.blue_text}Press Enter to go back to the main menu.\n")
         break
     ui()
+
 
 def prompt_for_currency(prompt_text):
     """
@@ -43,7 +45,7 @@ def prompt_for_currency(prompt_text):
                 raise ValueError
         except ValueError:
             print("Please enter a valid currency code.\n")
-    
+
 
 def list_currencies():
     """
@@ -52,6 +54,7 @@ def list_currencies():
     print(f"{helper.blue_text}Available currencies: {helper.white_text}")
     api.display_currency_list()
     press_enter_to_continue()
+
 
 def view_exchange_rate():
     """
@@ -62,6 +65,7 @@ def view_exchange_rate():
     exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
     api.display_exchange_rate(source_currency, destination_currency, exchange_rate)
     press_enter_to_continue()
+
 
 def convert_single_value():
     """
@@ -87,6 +91,7 @@ def convert_single_value():
     converted_amount = api.convert_currency(source_currency, destination_currency, convert_amount, exchange_rate)
     api.display_converted_currency(source_currency, destination_currency, convert_amount, converted_amount)
     press_enter_to_continue()
+
 
 def convert_file_values():
     """
@@ -176,6 +181,7 @@ def convert_file_values():
     # Return to main menu
     press_enter_to_continue()
 
+
 options = [
     {
         "id": 1,
@@ -199,13 +205,15 @@ options = [
     }
 ]
 
+
 def init():
     """
     Initialises the program
     """
     # Get the most recent currency list from the API
     api.get_currency_list()
-    
+
+
 def menu():
     """
     Displays all program options to the user
@@ -254,11 +262,13 @@ def user_menu_choice():
     # Call the action function of the chosen option
     chosen_option["action"]()
 
+
 def ui():
     # Print welcome text to the user
     print(f"{helper.blue_text}Please enter the number value for one of the following options:{helper.white_text}")
     menu()
     user_menu_choice()
+
 
 def main():
     """
@@ -270,6 +280,5 @@ def main():
     print(f"{helper.blue_text}Welcome to the Currency Converter.")
     ui()
 
-#print(shutil.get_terminal_size())
-#columns = 80, lines = 24
-main()    
+
+main()
