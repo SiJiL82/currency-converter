@@ -5,6 +5,7 @@ green_text = "\033[1;32;40m"
 white_text = "\033[0;37;40m"
 blue_text = "\033[1;34;40m"
 
+
 def get_max_dict_value_length(dict):
     """
     Returns the length of the longest value in a dictionary
@@ -15,6 +16,7 @@ def get_max_dict_value_length(dict):
             max = len(dict[key])
     return max
 
+
 def get_max_dict_key_length(dict):
     """
     Returns the length of the longest key in a dictionary
@@ -24,6 +26,7 @@ def get_max_dict_key_length(dict):
         if len(key) > max:
             max = len(key)
     return max
+
 
 def get_max_dict_subvalue_length(dict, key_name):
     """
@@ -36,6 +39,7 @@ def get_max_dict_subvalue_length(dict, key_name):
             max = length
     return max
 
+
 def get_csv_column(file_name, column_name):
     """
     Uses Pandas module to load a CSV and return a specified column as a list
@@ -43,19 +47,23 @@ def get_csv_column(file_name, column_name):
     csv = pd.read_csv(file_name)
     return csv[column_name]
 
+
 def add_csv_column(file_name, column_name, column_data):
     """
-    Uses Pandas module to load a CSV, add a new column to the end and insert the supplied data
+    Uses Pandas module to load a CSV, add a new column to the end
+    and insert the supplied data
     """
     csv = pd.read_csv(file_name)
     csv[column_name] = column_data
     save_csv(file_name, csv)
+
 
 def save_csv(file_name, file):
     """
     Uses Pandas module to save a loaded CSV to file on disk
     """
     file.to_csv(file_name, index=False)
+
 
 def compare_string_caseinsensitive(string1, string2):
     """
@@ -65,6 +73,7 @@ def compare_string_caseinsensitive(string1, string2):
         return True
     else:
         return False
+
 
 def check_csv_column_exists(file_name, column_name):
     """
@@ -76,9 +85,11 @@ def check_csv_column_exists(file_name, column_name):
     else:
         return False
 
+
 def is_number(value):
     """
-    Check if the supplied value (usually a string) can be converted to an int or float
+    Check if the supplied value (usually a string)
+    can be converted to an int or float
     """
     try:
         float(value)
