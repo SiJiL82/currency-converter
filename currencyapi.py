@@ -7,14 +7,15 @@ import math
 if os.path.exists("env.py"):
     import env
 
-#Store API key for use in other functions
+# Store API key for use in other functions
 APIKEY = os.environ.get("APIKEY")
 
 # Global variable to store curency list in
 currency_list_dict = {}
 
-#Global variable for API base URL
+# Global variable for API base URL
 api_url = "https://api.currconv.com/api/v7"
+
 
 def get_currency_list():
     """
@@ -29,6 +30,7 @@ def get_currency_list():
     except Exception as e:
         print("Error:")
         print(e)
+
 
 def display_currency_list():
     """
@@ -62,6 +64,7 @@ def display_currency_list():
     # Display the end string to the console.
     print(f"{print_str}")
 
+
 def get_exchange_rate(source, destination):
     """
     Displays the exchange rate for the passed in currencies
@@ -77,6 +80,7 @@ def get_exchange_rate(source, destination):
     exchange_rate = json.loads(response.text)
     return exchange_rate
 
+
 def display_exchange_rate(source, destination, exchange_rate):
     """
     Displays the exchange rate from the API in a user readable format
@@ -90,6 +94,7 @@ def display_exchange_rate(source, destination, exchange_rate):
     # Display reverse of search to user
     print(f"1 {helper.green_text}{destination}{helper.white_text} is equal to {exchange_rate.get(reverse_lookup)} {helper.green_text}{source}{helper.white_text}")
 
+
 def convert_currency(source, destination, amount, exchange_rate):
     """
     Converts the supplied amount to the destination currency
@@ -101,6 +106,7 @@ def convert_currency(source, destination, amount, exchange_rate):
     # Calculate the exchanged value
     amount_destination = amount * rate
     return amount_destination
+
 
 def display_converted_currency(source, destination, amount, amount_converted):
     """
@@ -123,6 +129,7 @@ def get_currency_symbol(key):
     else:
         return ""
 
+
 def check_currency_in_list(key):
     """
     Checks if supplied currency exists in the API currency list
@@ -131,8 +138,3 @@ def check_currency_in_list(key):
         return True
     else:
         return False
-
-# Debugging
-# get_currency_list()    
-# display_currency_list()
-# convert_currency("CLF", "GBP", 5, {'CLF_GBP': 0.723105, 'GBP_USD': 1.384131})
