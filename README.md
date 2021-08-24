@@ -36,6 +36,9 @@ Below is a high level overview of the workflow through the application.
         - Colour formatting makes the menu clear to users.
         - Validation ensures only numerical values from the list can be chosen.
         ![Main Menu](readme-assets/images/user_menu.png)
+    - ## Up to Date Data
+        - When the program is run, the latest list of currencies are pulled from the API automatically without the user needing to request them.
+        - All currency conversion data is pulled from the API as it is requested, ensuring data is as up to date as possible.
 # Testing
 
 # Deployment
