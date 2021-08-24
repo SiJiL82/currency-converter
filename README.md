@@ -29,7 +29,13 @@ The application can be used in a web browser at [LINK]
 Below is a high level overview of the workflow through the application.  
 ![Currency Converter Workflow](readme-assets/images/currency-converter-workflow.png)
 # Features
-
+    - ## User Menu
+        - Options presented to user allowing them to control the program flow.
+        - Created dynamically from an array of objects defining the actions, making it easy to expand.
+        - The "Quit" option is automatically appended to the end of the list.
+        - Colour formatting makes the menu clear to users.
+        - Validation ensures only numerical values from the list can be chosen.
+        ![Main Menu](readme-assets/images/user_menu.png)
 # Testing
 
 # Deployment
@@ -37,4 +43,4 @@ Below is a high level overview of the workflow through the application.
 # Credits
 https://ozzmaker.com/add-colour-to-text-in-python/
 https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input
-https://exchangeratesapi.io/
+https://free.currencyconverterapi.com/
