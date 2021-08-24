@@ -6,7 +6,7 @@ from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
 
 # Style the text for user prompts
-input_prompt_style = Style.from_dict({
+prompt_style = Style.from_dict({
     # User input (default text).
     '': '#ffffff',
     # Prompt.
@@ -16,7 +16,8 @@ input_prompt_style = Style.from_dict({
 
 def press_enter_to_continue():
     """
-    Loop until user presses Enter key, rather than jumping straight back to the menu.
+    Loop until user presses Enter key,
+    rather than jumping straight back to the menu.
     Makes it easier for user to see text returned by their operation.
     """
     while True:
@@ -33,11 +34,13 @@ def prompt_for_currency(prompt_text):
     print(f"{helper.blue_text}Start typing to present list of currencies.")
     print(f"{helper.blue_text}Press <TAB> and <ENTER> to select a currency.")
     print(f"{helper.blue_text}Note that all currencies are in UPPERCASE.")
-    prompt_message = [
+    message = [
         ('class:prompt_user', prompt_text)
     ]
     while True:
-        user_input = prompt(prompt_message, style=input_prompt_style, completer=key_completer)
+        user_input = prompt(message,
+                            style=prompt_style,
+                            completer=key_completer)
         try:
             if api.check_currency_in_list(user_input):
                 return user_input
@@ -60,10 +63,10 @@ def view_exchange_rate():
     """
     Get the exchange rate for 2 currencies
     """
-    source_currency = prompt_for_currency("Enter source currency: ")
-    destination_currency = prompt_for_currency("Enter destination currency: ")
-    exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
-    api.display_exchange_rate(source_currency, destination_currency, exchange_rate)
+    source = prompt_for_currency("Enter source currency: ")
+    destination = prompt_for_currency("Enter destination currency: ")
+    exchange_rate = api.get_exchange_rate(source, destination)
+    api.display_exchange_rate(source, destination, exchange_rate)
     press_enter_to_continue()
 
 
@@ -71,15 +74,15 @@ def convert_single_value():
     """
     Converts a single numerical value from one currency to another
     """
-    source_currency = prompt_for_currency("Enter source currency: ")
-    destination_currency = prompt_for_currency("Enter destination currency: ")
-    exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
+    source = prompt_for_currency("Enter source currency: ")
+    destination = prompt_for_currency("Enter destination currency: ")
+    exchange_rate = api.get_exchange_rate(source, destination)
 
     prompt_message = [
         ('class:prompt_user', "Enter value to convert: ")
     ]
     while True:
-        user_input = prompt(prompt_message, style=input_prompt_style)
+        user_input = prompt(prompt_message, style=prompt_style)
         try:
             if user_input.isdigit():
                 convert_amount = float(user_input)
@@ -88,8 +91,14 @@ def convert_single_value():
                 raise ValueError()
         except ValueError:
             print("Please enter a valid currency value to convert.")
-    converted_amount = api.convert_currency(source_currency, destination_currency, convert_amount, exchange_rate)
-    api.display_converted_currency(source_currency, destination_currency, convert_amount, converted_amount)
+    converted_amount = api.convert_currency(source,
+                                            destination,
+                                            convert_amount,
+                                            exchange_rate)
+    api.display_converted_currency(source,
+                                   destination,
+                                   convert_amount,
+                                   converted_amount)
     press_enter_to_continue()
 
 
@@ -99,28 +108,34 @@ def convert_file_values():
     """
     # Prompt user to enter a path to a CSV file
     prompt_message = [
-        ('class:prompt_user', "Enter the path to the CSV file containing the data you want to convert: ")
+        ('class:prompt_user', "Enter the path to the CSV file containing \
+the data you want to convert: ")
     ]
-    while True:        
-        filename = prompt(prompt_message, style=input_prompt_style)
+    while True:
+        filename = prompt(prompt_message, style=prompt_style)
         # Check if user has pressed "q" to cancel and go back to the main menu
         if filename == "q":
             press_enter_to_continue()
         # Check if the file provided exists, and is a .csv
         try:
-            if os.path.isfile(filename) and helper.compare_string_caseinsensitive(".csv", os.path.splitext(filename)[1]):
+            extmatch = helper.compare_string_caseinsensitive(".csv",
+                                                             os.path.splitext(
+                                                                 filename)[1])
+            if os.path.isfile(filename) and extmatch:
                 break
             else:
                 raise ValueError
         # Print error message if not
         except ValueError:
-            print(f"{helper.blue_text}Please enter a valid file name, or {helper.white_text}q {helper.blue_text}to cancel")
+            print(f"{helper.blue_text}Please enter a valid file name, or \
+{helper.white_text}q {helper.blue_text}to cancel")
     # Prompt user to enter the column to convert
     prompt_message = [
-        ('class:prompt_user', "Enter the column header containing the data you want to convert: ")
+        ('class:prompt_user', "Enter the column header containing \
+the data you want to convert: ")
     ]
     while True:
-        source_column_name = prompt(prompt_message, style=input_prompt_style)
+        source_column_name = prompt(prompt_message, style=prompt_style)
         # Check if user has pressed "q" to cancel and go back to the main menu
         if source_column_name == "q":
             press_enter_to_continue()
@@ -132,20 +147,23 @@ def convert_file_values():
                 raise ValueError
         # Print error message if not
         except ValueError:
-            print(f"{helper.blue_text}Please enter a valid column name, or {helper.white_text}q {helper.blue_text}to cancel")
+            print(f"{helper.blue_text}Please enter a valid column name, or \
+{helper.white_text}q {helper.blue_text}to cancel")
     # Check if the column provided is a currency name
     if api.check_currency_in_list(source_column_name.upper()):
         print(f"{helper.blue_text}Column name supplied matches a currency.")
-        print(f"Do you wish to set the source currency to this value {helper.green_text}{source_column_name.upper()}{helper.blue_text}?{helper.white_text}")
+        print(f"Do you wish to set the source currency to this value \
+{helper.green_text}{source_column_name.upper()}{helper.blue_text}?\
+{helper.white_text}")
         prompt_message = [
             ('class:prompt_user', "y/n: ")
         ]
         # If it is, check if user wants to use it as the source currency
         while True:
-            user_input = prompt(prompt_message, style=input_prompt_style)
+            user_input = prompt(prompt_message, style=prompt_style)
             try:
                 if user_input.lower() == "y":
-                    source_currency = source_column_name.upper()
+                    source = source_column_name.upper()
                     break
                 elif user_input.lower() == "n":
                     break
@@ -153,30 +171,39 @@ def convert_file_values():
                     raise ValueError
             except ValueError:
                 print(f"{helper.blue_text}Please enter a valid response: ")
-    # If not a valid currency, or user chose not to use it, prompt for source currency.
+    # If not a valid currency, or user chose not to use it,
+    # prompt for source currency.
     else:
-        source_currency = prompt_for_currency("Enter the source currency the data is stored in: ")
+        source = prompt_for_currency("Enter the source currency \
+the data is stored in: ")
     # Prompt user for destination currency to convert to
-    destination_currency = prompt_for_currency("Enter the currency to convert to: ")
+    destination = prompt_for_currency("Enter the currency to convert to: ")
     # Get existing data from the CSV
     source_data = helper.get_csv_column(filename, source_column_name)
     # Get the exchange rate for the supplied currencies
-    exchange_rate = api.get_exchange_rate(source_currency, destination_currency)
+    exchange_rate = api.get_exchange_rate(source, destination)
     # Convert the data
-    print(f"{helper.blue_text}Writing converted data to file...{helper.white_text}")
+    print(f"{helper.blue_text}Writing converted data to file...\
+{helper.white_text}")
     converted_data_arr = []
     for data in source_data:
         # Check the data is a number and can be converted
         if not helper.is_number(data):
-            print(f"{helper.blue_text}Supplied data is not numerical. Aborting conversion.{helper.white_text}")
-            # Go back to main menu. This will break out of the current code loop when the program is exited.
+            print(f"{helper.blue_text}Supplied data is not numerical. \
+Aborting conversion.{helper.white_text}")
+            # Go back to main menu.
+            # Breaks out of the current code loop when the program is exited.
             press_enter_to_continue()
-        # If data is a valid number, convert it using the exchange rate already stored.
-        converted_data = api.convert_currency(source_currency, destination_currency, data, exchange_rate)
+        # If data is a valid number,
+        # convert it using the exchange rate already stored.
+        converted_data = api.convert_currency(source,
+                                              destination,
+                                              data,
+                                              exchange_rate)
         # Add the converted data to the array of new data
         converted_data_arr.append(converted_data)
     # Add the new column to the CSV and save it
-    helper.add_csv_column(filename, destination_currency, converted_data_arr)
+    helper.add_csv_column(filename, destination, converted_data_arr)
     print(f"{helper.blue_text}File updated.{helper.white_text}")
     # Return to main menu
     press_enter_to_continue()
@@ -219,9 +246,11 @@ def menu():
     Displays all program options to the user
     """
     for option in options:
-        print(f'{helper.green_text}{option.get("id")}{helper.white_text}: {option.get("text")}') 
+        print(f'{helper.green_text}{option.get("id")}{helper.white_text}: \
+{option.get("text")}')
     # Add a Quit option after all the others
-    print(f'{helper.green_text}{len(options) + 1}{helper.white_text}: Quit') 
+    print(f'{helper.green_text}{len(options) + 1}{helper.white_text}: Quit')
+
 
 def user_menu_choice():
     """
@@ -234,7 +263,7 @@ def user_menu_choice():
             prompt_message = [
                 ('class:prompt_user', "Choice: ")
             ]
-            user_input = prompt(prompt_message, style=input_prompt_style)
+            user_input = prompt(prompt_message, style=prompt_style)
 
             # Check if input is numerical
             if user_input.isdigit():
@@ -246,14 +275,16 @@ def user_menu_choice():
                 break
             raise ValueError()
         except ValueError:
-            print(f"{helper.blue_text}Please enter a valid number value for one of the following options:")
+            print(f"{helper.blue_text}Please enter a valid number value for \
+one of the following options:")
             # Re-show the menu if a valid option wasn't shown
             menu()
-    # If last option was chosen, quit            
+    # If last option was chosen, quit
     if choice == len(options) + 1:
         print("Exiting.")
         raise SystemExit
-    # Compare the input against possible options to pick the one that was chosen
+    # Compare the input against possible options
+    # to pick the one that was chosen
     chosen_option = None
     for option in options:
         if option["id"] == choice:
@@ -265,7 +296,8 @@ def user_menu_choice():
 
 def ui():
     # Print welcome text to the user
-    print(f"{helper.blue_text}Please enter the number value for one of the following options:{helper.white_text}")
+    print(f"{helper.blue_text}Please enter the number value for one of the \
+following options:{helper.white_text}")
     menu()
     user_menu_choice()
 
