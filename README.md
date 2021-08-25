@@ -3,8 +3,9 @@
 This project is a Python command line application that can convert numerical values between different currencies.  
 
 The application can be used in a web browser at [Heroku Deployment](https://currency-converter-sijil82.herokuapp.com/)
-**Note:** Due to limitations within the terminal template used to deploy the application as a web page, some parts of the application do not function as intended.  
-These are only 
+**Note:** Due to limitations within the terminal template used to deploy the application as a web page, some parts of the application do not function as intended - in particular the autocomplete for entering a currency to use.  
+This is only cosmetic functionality however, and the core operations of the application work as intended.  
+For full functionality, it is recommended to clone the project and run the application locally by following the steps in the Deployment section.  
 
 ## Table of Contents
 * [Design](#design)
