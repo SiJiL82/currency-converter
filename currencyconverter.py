@@ -5,6 +5,7 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
 
+
 # Style the text for user prompts
 prompt_style = Style.from_dict({
     # User input (default text).
@@ -209,6 +210,7 @@ Aborting conversion.{helper.white_text}")
     press_enter_to_continue()
 
 
+# Menu options
 options = [
     {
         "id": 1,
