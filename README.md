@@ -59,6 +59,12 @@ Below is a high level overview of the workflow through the application.
     ![Autocomplete prompt for currency](readme-assets/images/view_exchange_rate_autocomplete.png)
     - After choosing both currencies, the application displays the currency conversion in both directions in a clear readable format.  
     ![View Exchange Rate](readme-assets/images/view_exchange_rate_completed.png)
+- ## Convert a Single Value
+    - Prompts user for a source then destination currency, followed by a numerical amount to convert.
+    - User can again use the auto complete functionality to choose the currencies they wish to use.  
+    - Displays the value entered converted to the destination currency in a user readable format.  
+    ![Convert Single Value Results](readme-assets/images/convert_value_results.png)
+    - Converted value retains all decimal places from the calculation, so it can be used for an application where precise calculations are critical.  
 
 # Testing
 
