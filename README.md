@@ -2,7 +2,9 @@
 
 This project is a Python command line application that can convert numerical values between different currencies.  
 
-The application can be used in a web browser at [LINK]  
+The application can be used in a web browser at [Heroku Deployment](https://currency-converter-sijil82.herokuapp.com/)
+**Note:** Due to limitations within the terminal template used to deploy the application as a web page, some parts of the application do not function as intended.  
+These are only 
 
 ## Table of Contents
 * [Design](#design)
@@ -29,16 +31,27 @@ The application can be used in a web browser at [LINK]
 Below is a high level overview of the workflow through the application.  
 ![Currency Converter Workflow](readme-assets/images/currency-converter-workflow.png)
 # Features
-    - ## User Menu
-        - Options presented to user allowing them to control the program flow.
-        - Created dynamically from an array of objects defining the actions, making it easy to expand.
-        - The "Quit" option is automatically appended to the end of the list.
-        - Colour formatting makes the menu clear to users.
-        - Validation ensures only numerical values from the list can be chosen.
-        ![Main Menu](readme-assets/images/user_menu.png)
-    - ## Up to Date Data
-        - When the program is run, the latest list of currencies are pulled from the API automatically without the user needing to request them.
-        - All currency conversion data is pulled from the API as it is requested, ensuring data is as up to date as possible.
+- ## User Menu
+    - Options presented to user allowing them to control the program flow.
+    - Created dynamically from an array of objects defining the actions, making it easy to expand.
+    - The "Quit" option is automatically appended to the end of the list.
+    - Colour formatting makes the menu clear to users.
+    - Validation ensures only numerical values from the list can be chosen.  
+    ![Main Menu](readme-assets/images/user_menu.png)
+- ## Up to Date Data
+    - When the program is run, the latest list of currencies are pulled from the API automatically without the user needing to request them.
+    - All currency conversion data is pulled from the API as it is requested, ensuring data is as up to date as possible.
+- ## View All Currencies
+    - Choosing option 1 on the menu will list all the available currencies.
+    - The 3 letter currency ID and full currency name are both displayed, with colour formatting to improve readability.
+    - The currency list is displayed in a dynamic column layout, where the number of columns automatically fits the size of the terminal the application is run in
+        - Default xTerm console (80 characters wide):  
+        ![Currency List - xTerm](readme-assets/images/currency_list_xterm.png)
+        - Default Windows 10 Terminal (120 characters wide):
+        ![Currency List - Windows 10 Terminal](readme-assets/images/currency_list_win10_term.png)
+        - Windows 10 Terminal fullscreen (423 characters wide):
+        ![Currency List - Windows 10 Full Screen](readme-assets/images/currency_list_win10_term_fullscreen.png)
+
 # Testing
 
 # Deployment
