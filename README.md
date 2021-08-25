@@ -51,6 +51,13 @@ Below is a high level overview of the workflow through the application.
         ![Currency List - Windows 10 Terminal](readme-assets/images/currency_list_win10_term.png)
         - Windows 10 Terminal fullscreen (423 characters wide):
         ![Currency List - Windows 10 Full Screen](readme-assets/images/currency_list_win10_term_fullscreen.png)
+- ## View a Currency Conversion Rate
+    - Prompts user for a source then destination currency to show an exchange rate for.
+    - User can start typing any 3 letter currency ID and the application will show an autocomplete prompt for currencies that match what they are typing.
+        - Note that currencies are stored in uppercase, and the user must also enter the currency they want to use in uppercase for it to match.  
+    ![Autocomplete prompt for currency](readme-assets/images/view_exchange_rate_autocomplete.png)
+    - After choosing both currencies, the application displays the currency conversion in both directions in a clear readable format.  
+    ![View Exchange Rate](readme-assets/images/view_exchange_rate_completed.png)
 
 # Testing
 
