@@ -152,8 +152,10 @@ the data you want to convert: ")
 {helper.white_text}q {helper.blue_text}to cancel")
     # Check if the column provided is a currency name
     if api.check_currency_in_list(source_column_name.upper()):
-        print(f"{helper.blue_text}Column name supplied matches a currency.")
-        print(f"Do you wish to set the source currency to this value \
+        print(f"{helper.blue_text}Column name supplied matches currency: \
+{helper.white_text}\
+{api.currency_list_dict.get(source_column_name.upper())['currencyName']}.")
+        print(f"{helper.blue_text}Do you wish to set the source currency to this value \
 {helper.green_text}{source_column_name.upper()}{helper.blue_text}?\
 {helper.white_text}")
         prompt_message = [
