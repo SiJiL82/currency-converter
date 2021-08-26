@@ -145,3 +145,4 @@ Below is a high level overview of the workflow through the application.
     - Adding colour formatting: [OzzMaker.com](https://ozzmaker.com/add-colour-to-text-in-python/)
     - Auto complete prompting: [Python Prompt Toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input)
     - Exchange rates API: [CurrencyConverterAPI.com](https://free.currencyconverterapi.com/)
+    - CSV loading and manipluation: [Pandas Library](https://pandas.pydata.org/)
