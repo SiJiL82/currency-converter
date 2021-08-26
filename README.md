@@ -20,6 +20,7 @@ For full functionality, it is recommended to clone the project and run the appli
     * [Convert Values in File](#convert-values-in-file)
 * [Testing](#testing)
     * [User Story Testing](#user-story-testing)
+    * [Application Testing](#application-testing)
 * [Deployment](#deployment)
 * [Credits](#credits)
 
