@@ -310,9 +310,6 @@ def main():
     """
     # Clear the console before starting
     os.system('cls' if os.name == 'nt' else 'clear')
-    files = [f for f in os.listdir('.') if os.path.isfile(f)]
-    for f in files:
-        print(f)
     init()
     print(f"{helper.blue_text}Welcome to the Currency Converter.")
     ui()
