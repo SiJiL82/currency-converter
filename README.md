@@ -12,6 +12,12 @@ For full functionality, it is recommended to clone the project and run the appli
     * [User Stories](#user-stories)
     * [Application Workflow](#application-workflow)
 * [Features](#features)
+    * [User Menu](#user-menu)
+    * [Up to Date Data](#up-to-date-data)
+    * [View All Currencies](#view-all-currencies)
+    * [View a Currency Conversion Rate](#view-a-currency-conversion-rate)
+    * [Convert a Single Value](#convert-a-single-value)
+    * [Convert Values in File](#convert-values-in-file)
 * [Testing](#testing)
 * [Deployment](#deployment)
 * [Credits](#credits)
@@ -79,7 +85,26 @@ Below is a high level overview of the workflow through the application.
         - After column has been converted and new data saved to file:  
         ![File Conversion After](readme-assets/images/file_conversion_after.png)
 # Testing
-
+## User Story Testing
+-  __As a user of the application, I want to:__
+    - Enter 2 currencies and see the exchange rate between them.  
+        - The user can choose the "View and exchange rate" option, enter their 2 currencies and be shown the exchange rate between these currencies.  
+        - Seeing the rate in both directions would be a bonus.  
+            - The application automatically returns the exchange rate for the chosen currencies in both directions.  
+    - Enter a source currency, a destination currency and a value, and have the value converted into the destination currency.  
+        - The user can choose the "Convert a single value to another currency" option, enter their currencies and a value to be converted and will be shown the converted amount.  
+        - See the exchange rate that was used for the calculation.  
+            - This was not implemented as it made the user experience feel cluttered. However the user can choose the "View an exchange rate" option to see the rate used for 2 currencies.
+    - Be sure any calculations I make are using the latest exchange data.  
+        - The application pulls the latest available data from the API each time a calculation is performed.
+    - Have an intuitive UI that makes it clear what operations I can perform.  
+        - The application has a clear menu and user prompts, with consistent colour formatting added to assist with presenting information to the user.  
+    - Be able to make calculations quickly, without having to type out the entire currency name.  
+        - The application uses only the 3 letter abbreviation for a currency for inputs by the user, making it quicker to enter chosen currencies.  
+        - Being shown currency abbreviations would be a bonus, so I don't have to look them up.  
+            - The user can choose the "List available currencies" option to present all available currencies with their full name and 3 letter abbreviation.  
+    - Have the ability to pass in a spreadsheet of data to be processed, rather than have to enter each calculation manually.  
+        - The user can choose the "Convert values from a supplied file to another currency" to load a CSV file with data they want to be converted.
 # Deployment
 
 # Credits
