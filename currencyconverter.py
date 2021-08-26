@@ -60,6 +60,17 @@ def list_currencies():
     press_enter_to_continue()
 
 
+def search_currencies():
+    """
+    Search the currency names and display all results that match
+    provided search term
+    """
+    prompt_message = [
+        ('class:prompt_user', "Enter country name to search for): ")
+    ]
+    user_input = prompt(prompt_message, style=prompt_style)
+
+
 def view_exchange_rate():
     """
     Get the exchange rate for 2 currencies
@@ -217,6 +228,10 @@ options = [
     {
         "text": "List available currencies",
         "action": list_currencies
+    },
+    {
+        "text": "Search for a currency",
+        "action": search_currencies
     },
     {
         "text": "View an exchange rate",
