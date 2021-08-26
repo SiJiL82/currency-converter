@@ -57,7 +57,7 @@ def display_currency_list():
     # Empty string to start the printed list with
     print_str = ""
     # Loop through each symbol to get out the key and value to print to console
-    for currency in currency_list_dict:
+    for currency in sorted(currency_list_dict):
         # String for each key and value, with colour formatting around the key
         str = f"{helper.green_text}{currency}{helper.white_text}: \
 {currency_list_dict.get(currency)['currencyName']}"
