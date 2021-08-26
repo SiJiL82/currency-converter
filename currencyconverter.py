@@ -70,7 +70,10 @@ def search_currencies():
     ]
     user_input = prompt(prompt_message, style=prompt_style)
     keylist = api.search_currency_name(user_input)
+    print(f"{helper.blue_text}Matching results:")
     api.display_currency_list(keylist)
+    press_enter_to_continue()
+
 
 def view_exchange_rate():
     """
