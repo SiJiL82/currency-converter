@@ -69,6 +69,7 @@ def search_currencies():
         ('class:prompt_user', "Enter country name to search for): ")
     ]
     user_input = prompt(prompt_message, style=prompt_style)
+    keylist = api.search(user_input)
 
 
 def view_exchange_rate():

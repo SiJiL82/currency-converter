@@ -33,6 +33,13 @@ def get_currency_list():
         print(e)
 
 
+def search(search_term):
+    matched_keys = []
+    for key in currency_list_dict:
+        if search_term in currency_list_dict.get(key)['currencyName']:
+            print(currency_list_dict.get(key)['currencyName'])
+
+
 def display_currency_list():
     """
     Prints the available currencies out in a user readable format
