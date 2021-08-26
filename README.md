@@ -19,6 +19,7 @@ For full functionality, it is recommended to clone the project and run the appli
     * [Convert a Single Value](#convert-a-single-value)
     * [Convert Values in File](#convert-values-in-file)
 * [Testing](#testing)
+    * [User Story Testing](#user-story-testing)
 * [Deployment](#deployment)
 * [Credits](#credits)
 
@@ -104,7 +105,15 @@ Below is a high level overview of the workflow through the application.
         - Request: Being shown currency abbreviations would be a bonus, so I don't have to look them up.  
             - Result: The user can choose the "List available currencies" option to present all available currencies with their full name and 3 letter abbreviation.  
     - Request: Have the ability to pass in a spreadsheet of data to be processed, rather than have to enter each calculation manually.  
-        - Result: The user can choose the "Convert values from a supplied file to another currency" to load a CSV file with data they want to be converted.
+        - Result: The user can choose the "Convert values from a supplied file to another currency" to load a CSV file with data they want to be converted.  
+## Application Testing
+- The menu input option checks for valid user input and prompts the user to input a valid choice if one is not entered:  
+    - Invalid number chosen:  
+    ![Invalid Menu Number Choice](readme-assets/images/testing_invalid_numerical_menu_choice.png)
+    - Invalid alphabetical value entered:  
+    ![Invalid Menu String Choice](readme-assets/images/testing_invalid_string_menu_choice.png)
+- Entering an input that doesn't match an available currency code prompts the user to enter a valid one:  
+![Invalid Currency Code](readme-assets/images/testing_invalid_currency.png)
 # Deployment
 
 # Credits
