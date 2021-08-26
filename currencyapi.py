@@ -104,7 +104,7 @@ def display_exchange_rate(source, destination, exchange_rate):
     source_currency_symbol = get_currency_symbol(source)
     destination_currency_symbol = get_currency_symbol(destination)
     # Display provided search result to user
-    print(f"{source_currency_symbol}1 {helper.green_text}{source}\
+    print(f"{helper.white_text}{source_currency_symbol}1 {helper.green_text}{source}\
 {helper.white_text} is equal to {destination_currency_symbol}\
 {exchange_rate.get(lookup)} {helper.green_text}{destination}\
 {helper.white_text}")
