@@ -33,11 +33,15 @@ def get_currency_list():
         print(e)
 
 
-def search(search_term):
+def search_currency_name(search_term):
+    """
+    Searches the currency name field of the API results
+    Returns a list of the matching currency keys
+    """
     matched_keys = []
     for key in currency_list_dict:
         if search_term in currency_list_dict.get(key)['currencyName']:
-            print(currency_list_dict.get(key)['currencyName'])
+            matched_keys.append(key)
 
 
 def display_currency_list():
