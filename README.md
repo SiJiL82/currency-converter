@@ -3,9 +3,10 @@
 This project is a Python command line application that can convert numerical values between different currencies.  
 
 The application can be used in a web browser at [Heroku Deployment](https://currency-converter-sijil82.herokuapp.com/)
-**Note:** Due to limitations within the terminal template used to deploy the application as a web page, some parts of the application do not function as intended - in particular the autocomplete for entering a currency to use.  
-This is only cosmetic functionality however, and the core operations of the application work as intended.  
-For full functionality, it is recommended to clone the project and run the application locally by following the steps in the Deployment section.  
+**Note:** Due to limitations within the terminal template used to deploy the application as a web page, some parts of the application do not function as intended:
+- The autocomplete functionality does not load. This is purely cosmetic, and the user can type out the currency name manually.
+- Because the terminal does not have access to the underlying VM and file structure, the option to load a file cannot function.
+- For full functionality, it is recommended to clone the project and run the application locally by following the steps in the Deployment section.  
 
 ## Table of Contents
 * [Design](#design)
@@ -81,7 +82,8 @@ Below is a high level overview of the workflow through the application.
         - Destination currency to convert to.  
     ![Convert Values in File](readme-assets/images/convert_file_process.png)
     - The data in the supplied column is converted to the destination currency, and the new data is appended to the file as a new column.  
-        - A sample `car_prices.csv` file is included with this project that can be used to test the process.  
+        - A sample `car_prices.csv` file is included with this project that can be used to test the process.
+            -  
         - Source data:  
         ![File Conversion Before](readme-assets/images/file_conversion_before.png)
         - After column has been converted and new data saved to file:  
