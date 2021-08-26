@@ -42,21 +42,27 @@ def search_currency_name(search_term):
     for key in currency_list_dict:
         if search_term in currency_list_dict.get(key)['currencyName']:
             matched_keys.append(key)
+    return matched_keys
 
 
-def display_currency_list():
+def display_currency_list(keylist=None):
     """
     Prints the available currencies out in a user readable format
     """
+    if keylist is not None:
+        currency_display_list = {key: currency_list_dict[key]
+                                 for key in keylist}
+    else:
+        currency_display_list = currency_list_dict
     # Counter for number of columns in printed string
     i = 1
 
     # Width of each column to print. This is:
     # max key length + spacing + max value length
     # + spacing + colour code escape values
-    value_length = helper.get_max_dict_subvalue_length(currency_list_dict,
+    value_length = helper.get_max_dict_subvalue_length(currency_display_list,
                                                        "currencyName")
-    key_length = helper.get_max_dict_value_length(currency_list_dict)
+    key_length = helper.get_max_dict_value_length(currency_display_list)
     colour_format_length = 20
     column_width = value_length + 2 + key_length + 2 + colour_format_length
 
@@ -68,10 +74,10 @@ def display_currency_list():
     # Empty string to start the printed list with
     print_str = ""
     # Loop through each symbol to get out the key and value to print to console
-    for currency in sorted(currency_list_dict):
+    for currency in sorted(currency_display_list):
         # String for each key and value, with colour formatting around the key
         str = f"{helper.green_text}{currency}{helper.white_text}: \
-{currency_list_dict.get(currency)['currencyName']}"
+{currency_display_list.get(currency)['currencyName']}"
         # If we've appended as many strings as there are columns,
         # reset the columns and start a new line
         if i > num_columns:
