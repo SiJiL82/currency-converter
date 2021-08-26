@@ -285,15 +285,8 @@ one of the following options:")
     if choice == len(options) + 1:
         print("Exiting.")
         raise SystemExit
-    # Compare the input against possible options
-    # to pick the one that was chosen
-    chosen_option = None
-    for option in options:
-        if option["id"] == choice:
-            chosen_option = option
-            break
-    # Call the action function of the chosen option
-    chosen_option["action"]()
+    # Call the action for the option in the array position chosen
+    options[choice-1]["action"]()
 
 
 def ui():
