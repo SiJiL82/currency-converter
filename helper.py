@@ -1,9 +1,11 @@
 import pandas as pd
 
 # Colour Variables
-green_text = "\033[1;32;40m"
+# green_text = "\033[1;32;40m"
+green_text = "\33[92m"
 white_text = "\033[0;37;40m"
-blue_text = "\033[1;34;40m"
+# blue_text = "\033[1;34;40m"
+blue_text = "\33[34m"
 
 
 def get_max_dict_value_length(dict):
