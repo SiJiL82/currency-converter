@@ -309,8 +309,6 @@ def main():
     Main program call
     """
     # Clear the console before starting
-    yellow = "\033[33m"
-    print(f"{yellow} Test")
     os.system('cls' if os.name == 'nt' else 'clear')
     init()
     print(f"{helper.blue_text}Welcome to the Currency Converter.")
