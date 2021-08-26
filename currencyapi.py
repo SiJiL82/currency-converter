@@ -38,7 +38,10 @@ def search_currency_name(search_term):
     Searches the currency name field of the API results
     Returns a list of the matching currency keys
     """
+    # Array to store return values
     matched_keys = []
+    # Loop through currencies, if name contains search term
+    # add the currency key to return list
     for key in currency_list_dict:
         if search_term.lower() in \
            currency_list_dict.get(key)['currencyName'].lower():
