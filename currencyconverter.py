@@ -213,22 +213,18 @@ Aborting conversion.{helper.white_text}")
 # Menu options
 options = [
     {
-        "id": 1,
         "text": "List available currencies",
         "action": list_currencies
     },
     {
-        "id": 2,
         "text": "View an exchange rate",
         "action": view_exchange_rate
     },
     {
-        "id": 3,
         "text": "Convert a single value to another currency",
         "action": convert_single_value
     },
     {
-        "id": 4,
         "text": "Convert values from a supplied file to another currency",
         "action": convert_file_values
     }
@@ -248,7 +244,7 @@ def menu():
     Displays all program options to the user
     """
     for option in options:
-        print(f'{helper.green_text}{option.get("id")}{helper.white_text}: \
+        print(f'{helper.green_text}{options.index(option) + 1}{helper.white_text}: \
 {option.get("text")}')
     # Add a Quit option after all the others
     print(f'{helper.green_text}{len(options) + 1}{helper.white_text}: Quit')
