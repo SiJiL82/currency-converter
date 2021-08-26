@@ -114,6 +114,15 @@ Below is a high level overview of the workflow through the application.
     ![Invalid Menu String Choice](readme-assets/images/testing_invalid_string_menu_choice.png)
 - Entering an input that doesn't match an available currency code prompts the user to enter a valid one:  
 ![Invalid Currency Code](readme-assets/images/testing_invalid_currency.png)
+- Entering a non-numerical value to convert prompts the user to enter a valid value:  
+![Invalid Value To Convert](readme-assets/images/testing_invalid_conversion_value.png)
+- Entering a filename that doesn't exist when trying to convert a file's data prompts the user to enter a valid file:  
+![Invalid File Path](readme-assets/images/testing_invalid_file.png)
+- Entering a filename with an extension that isn't .csv prompts the user to enter a valid file:  
+![Invalid File Extension](readme-assets/images/testing_invalid_extension.png)
+- Providing a file to convert with data that isn't numerical will abort the conversion:  
+![Invalid File Data Example](readme-assets/images/testing_file_with_invalid_data.png)  
+![Invalid File Data](readme-assets/images/testing_invalid_file_data.png)
 # Deployment
 
 # Credits
