@@ -40,7 +40,8 @@ def search_currency_name(search_term):
     """
     matched_keys = []
     for key in currency_list_dict:
-        if search_term in currency_list_dict.get(key)['currencyName']:
+        if search_term.lower() in \
+           currency_list_dict.get(key)['currencyName'].lower():
             matched_keys.append(key)
     return matched_keys
 
