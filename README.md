@@ -124,8 +124,21 @@ Below is a high level overview of the workflow through the application.
 ![Invalid File Data Example](readme-assets/images/testing_file_with_invalid_data.png)  
 ![Invalid File Data](readme-assets/images/testing_invalid_file_data.png)
 # Deployment
-
+- __To deploy the project as an application that can be run locally:__
+    - **Note:** This project requires you to have [Python](https://www.python.org/) installed on your local PC.
+    - Go to the [GitHub Repo](https://github.com/SiJiL82/currency-converter) page.
+    - Click the `Code` button and download the ZIP file containing the project.
+    - Extract the ZIP file to a location on your PC.
+    - Generate an API Key at [Currency Converter API](https://free.currencyconverterapi.com/)
+    - In the folder you extracted the project files to, create an `env.py` file, and add the lines:
+    ```python
+    import os
+    os.environ.setdefault("APIKEY", "API KEY GENERATED ABOVE")
+    ```
+    - Open a terminal window to the location you extracted the files to, and run:  
+    `python currencyconverter.py`
 # Credits
-https://ozzmaker.com/add-colour-to-text-in-python/
-https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input
-https://free.currencyconverterapi.com/
+- __The following resources were referenced during the development of this project:__
+    - Adding colour formatting: [OzzMaker.com](https://ozzmaker.com/add-colour-to-text-in-python/)
+    - Auto complete prompting: [Python Prompt Toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input)
+    - Exchange rates API: [CurrencyConverterAPI.com](https://free.currencyconverterapi.com/)
