@@ -9,13 +9,19 @@ if os.path.exists("env.py"):
 
 # Store API key for use in other functions
 APIKEY = os.environ.get("APIKEY")
-
+APITYPE = os.environ.get("APITYPE")
 
 # Global variable to store curency list in
 currency_list_dict = {}
 
 # Global variable for API base URL
-api_url = "https://api.currconv.com/api/v7"
+api_type_switcher = {
+    "Free": "free",
+    "Premium": "api",
+    "Prepaid": "prepaid"
+}
+url_prefix = api_type_switcher.get(APITYPE)
+api_url = f"https://{url_prefix}.currconv.com/api/v7"
 
 
 def get_currency_list():
