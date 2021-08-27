@@ -62,6 +62,13 @@ Below is a high level overview of the workflow through the application.
         ![Currency List - Windows 10 Terminal](readme-assets/images/currency_list_win10_term.png)
         - Windows 10 Terminal fullscreen (423 characters wide):  
         ![Currency List - Windows 10 Full Screen](readme-assets/images/currency_list_win10_term_fullscreen.png)
+- ## Search for a Currency
+    - Prompts the user to enter a search term, and then returns all currencies where the currency name contains that term.
+    - Case insensitive search, as the API returns some currencies with the first letter of a word capitalised, and others not:  
+    ![Currency Search Case Insensitive](readme-assets/images/search_case_insensitive.png)
+    - Allows the user to enter either the common currency term (e.g.: "Franc") or a country (e.g.: "Croatia") to find the relevant currency code:  
+    ![Currency Search - Franc](readme-assets/images/search_results_franc.png)  
+    ![Currency Search - Croatia](readme-assets/images/search_results_croatia.png)  
 - ## View a Currency Conversion Rate
     - Prompts user for a source then destination currency to show an exchange rate for.  
     - User can start typing any 3 letter currency ID and the application will show an autocomplete prompt for currencies that match what they are typing.  
