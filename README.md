@@ -133,10 +133,12 @@ Below is a high level overview of the workflow through the application.
     - Click the `Code` button and download the ZIP file containing the project.
     - Extract the ZIP file to a location on your PC.
     - Generate an API Key at [Currency Converter API](https://free.currencyconverterapi.com/)
-    - In the folder you extracted the project files to, create an `env.py` file, and add the lines:
+    - In the folder you extracted the project files to, create an `env.py` file, and add the lines below:
+        - `SERVER TYPE` should be replaced with the API key type you have chosen, from: `Free`, `Premium`, `Prepaid`  
     ```python
     import os
     os.environ.setdefault("APIKEY", "API KEY GENERATED ABOVE")
+    os.environ.setdefault("APITYPE", "SERVER TYPE")
     ```
     - Open a terminal window to the location you extracted the files to, and run:  
     `python currencyconverter.py`
