@@ -66,8 +66,8 @@ def search_currencies():
     provided search term
     """
     prompt_message = [
-        ('class:prompt_user', "Enter search term, for example country name or \
-common currency denomination (e.g.: 'Pound'): ")
+        ('class:prompt_user', "Enter search term, for example country name\n\
+or common currency denomination (e.g.: 'Pound'): ")
     ]
     user_input = prompt(prompt_message, style=prompt_style)
     keylist = api.search_currency_name(user_input)
