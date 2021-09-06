@@ -9,3 +9,6 @@ apikey.json
 # Visual Studio cache directory
 .vs/
 .vscode/
+
+# Local Node.js install
+node_modules/
