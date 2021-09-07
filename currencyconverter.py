@@ -21,9 +21,8 @@ def press_enter_to_continue():
     rather than jumping straight back to the menu.
     Makes it easier for user to see text returned by their operation.
     """
-    while True:
-        input(f"{helper.blue_text}Press Enter to go back to the main menu.\n")
-        break
+    # Wait for user input
+    input(f"{helper.blue_text}Press Enter to go back to the main menu.\n")
     ui()
 
 
