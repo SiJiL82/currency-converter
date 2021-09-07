@@ -381,6 +381,7 @@ def main():
     """
     # Clear the console before starting
     os.system('cls' if os.name == 'nt' else 'clear')
+    # Run any initialisation required
     init()
     print(f"{helper.blue_text}Welcome to the Currency Converter.")
     ui()
