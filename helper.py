@@ -4,7 +4,7 @@ from colorama import init, Fore, Back, Style
 init(autoreset=True)
 
 # Colour Variables
-green_text = Fore.GREEN + Back.RESET + Style.NORMAL
+green_text = Fore.GREEN + Back.RESET + Style.BRIGHT
 white_text = Fore.RESET + Back.RESET + Style.NORMAL
 blue_text = Fore.BLUE + Back.RESET + Style.BRIGHT
 
