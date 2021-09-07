@@ -64,8 +64,11 @@ def add_csv_column(file_name, column_name, column_data):
     Uses Pandas module to load a CSV, add a new column to the end
     and insert the supplied data
     """
+    # Open CSV
     csv = pd.read_csv(file_name)
+    #  Set new column data with header name specified
     csv[column_name] = column_data
+    # Write CSV
     save_csv(file_name, csv)
 
 
