@@ -69,6 +69,7 @@ def list_currencies():
     Display the list of available currencies in user readable format
     """
     print(f"{helper.blue_text}Available currencies: {helper.white_text}")
+    # Print all available currencies
     api.display_currency_list()
     press_enter_to_continue()
 
