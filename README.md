@@ -67,8 +67,11 @@ Below is a high level overview of the workflow through the application.
 - ## View a Currency Conversion Rate
     - Prompts user for a source then destination currency to show an exchange rate for.  
     - User can start typing any 3 letter currency ID and the application will show an autocomplete prompt for currencies that match what they are typing.  
-        - Note that currencies are stored in uppercase, and the user must also enter the currency they want to use in uppercase for it to match.  
-    ![Autocomplete prompt for currency](readme-assets/images/view_exchange_rate_autocomplete.png)
+        - Note that currencies are stored in uppercase, and the user must also enter the currency they want to use in uppercase for the auto completion to work.  
+        - Entering a currency code in lowercase will still match to a currency however, just no autocomplete prompt is shown.  
+    ![Autocomplete Prompt For Currency](readme-assets/images/view_exchange_rate_autocomplete.png)
+    - After choosing a currency code, the code and full currency name are shown to the user as confirmation.  
+    ![Confirmation After Choosing Currency](readme-assets/images/view_exchange_rate_confirmation.png)  
     - After choosing both currencies, the application displays the currency conversion in both directions in a clear readable format.  
     ![View Exchange Rate](readme-assets/images/view_exchange_rate_completed.png)
 - ## Convert a Single Value  
