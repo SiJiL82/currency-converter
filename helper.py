@@ -8,7 +8,7 @@ green_text = "\033[1;92;40m"
 white_text = "\033[0;37;40m"
 blue_text = "\033[1;34;40m"
 
-blue_style = Fore.BLUE + Back.BLACK + Style.BRIGHT
+blue_style = Fore.RED + Back.RESET + Style.BRIGHT
 
 
 def get_max_dict_value_length(dict):
