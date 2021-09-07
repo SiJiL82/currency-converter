@@ -121,7 +121,13 @@ def get_exchange_rate(source, destination):
 
 
 def get_conversion_rate(source, destination, exchange_rate):
+    """
+    Returns a single numerical exchange rate from a bi-directional
+    exchange rate object
+    """
+    # Set key string to use
     lookup = f"{source}_{destination}"
+    # Return the exchange rate in the direction supplied
     return exchange_rate.get(lookup)
 
 
