@@ -61,7 +61,7 @@ def prompt_for_currency(prompt_text):
                 raise ValueError
         except ValueError:
             # Prompt user to enter correct value
-            print("Please enter a valid currency code.\n")
+            print("Please enter a valid currency code.")
 
 
 def list_currencies():
@@ -155,7 +155,7 @@ def convert_single_value():
                 raise ValueError()
         except ValueError:
             print("Please enter a valid numerical value to convert.")
-    # Get input converted to destination currency            
+    # Get input converted to destination currency
     converted_amount = api.convert_currency(source,
                                             destination,
                                             convert_amount,
