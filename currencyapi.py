@@ -120,27 +120,9 @@ def get_exchange_rate(source, destination):
     return exchange_rate
 
 
-def display_exchange_rate(source, destination, exchange_rate):
-    """
-    Displays the exchange rate from the API in a user readable format
-    """
-    # Set key for provided search
+def get_conversion_rate(source, destination, exchange_rate):
     lookup = f"{source}_{destination}"
-    # Set key for reverse of search
-    reverse_lookup = f"{destination}_{source}"
-    # Get currency symbols for source and destination currencies
-    source_currency_symbol = get_currency_symbol(source)
-    destination_currency_symbol = get_currency_symbol(destination)
-    # Display provided search result to user
-    print(f"{helper.white_text}{source_currency_symbol}1 {helper.green_text}{source}\
-{helper.white_text} is equal to {destination_currency_symbol}\
-{exchange_rate.get(lookup)} {helper.green_text}{destination}\
-{helper.white_text}")
-    # Display reverse of search to user
-    print(f"{destination_currency_symbol}1 {helper.green_text}{destination}\
-{helper.white_text} is equal to {source_currency_symbol}\
-{exchange_rate.get(reverse_lookup)} {helper.green_text}{source}\
-{helper.white_text}")
+    return exchange_rate.get(lookup)
 
 
 def convert_currency(source, destination, amount, exchange_rate):
