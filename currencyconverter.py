@@ -73,7 +73,8 @@ def search_currencies():
         ('class:prompt_user', "Enter search term, for example country name\n\
 or common currency denomination (e.g.: 'Pound'): ")
     ]
-    user_input = prompt(prompt_message, style=prompt_style)
+    user_input = prompt(prompt_message,
+                        style=prompt_style)
     keylist = api.search_currency_name(user_input)
     print(f"{helper.blue_text}Matching results:")
     api.display_currency_list(keylist)
@@ -111,13 +112,15 @@ def convert_single_value():
     """
     source = prompt_for_currency("Enter source currency: ")
     destination = prompt_for_currency("Enter destination currency: ")
-    exchange_rate = api.get_exchange_rate(source, destination)
+    exchange_rate = api.get_exchange_rate(source,
+                                          destination)
 
     prompt_message = [
         ('class:prompt_user', "Enter value to convert: ")
     ]
     while True:
-        user_input = prompt(prompt_message, style=prompt_style)
+        user_input = prompt(prompt_message,
+                            style=prompt_style)
         try:
             if user_input.isdigit():
                 convert_amount = float(user_input)
@@ -147,7 +150,8 @@ def convert_file_values():
 the data you want to convert: ")
     ]
     while True:
-        filename = prompt(prompt_message, style=prompt_style)
+        filename = prompt(prompt_message,
+                          style=prompt_style)
         # Check if user has pressed "q" to cancel and go back to the main menu
         if filename == "q":
             press_enter_to_continue()
@@ -172,13 +176,15 @@ the data you want to convert: ")
 the data you want to convert: ")
     ]
     while True:
-        source_column_name = prompt(prompt_message, style=prompt_style)
+        source_column_name = prompt(prompt_message,
+                                    style=prompt_style)
         # Check if user has pressed "q" to cancel and go back to the main menu
         if source_column_name == "q":
             press_enter_to_continue()
         # Check if the column provided exists in the file
         try:
-            if helper.check_csv_column_exists(filename, source_column_name):
+            if helper.check_csv_column_exists(filename,
+                                              source_column_name):
                 break
             else:
                 raise ValueError
@@ -194,12 +200,11 @@ the data you want to convert: ")
         print(f"{helper.blue_text}Do you wish to set the source currency to this value \
 {helper.green_text}{source_column_name.upper()}{helper.blue_text}?\
 {helper.white_text}")
-        prompt_message = [
-            ('class:prompt_user', "y/n: ")
-        ]
+        prompt_message = [('class:prompt_user', "y/n: ")]
         # If it is, check if user wants to use it as the source currency
         while True:
-            user_input = prompt(prompt_message, style=prompt_style)
+            user_input = prompt(prompt_message,
+                                style=prompt_style)
             try:
                 if user_input.lower() == "y":
                     source = source_column_name.upper()
@@ -218,9 +223,11 @@ the data is stored in: ")
     # Prompt user for destination currency to convert to
     destination = prompt_for_currency("Enter the currency to convert to: ")
     # Get existing data from the CSV
-    source_data = helper.get_csv_column(filename, source_column_name)
+    source_data = helper.get_csv_column(filename,
+                                        source_column_name)
     # Get the exchange rate for the supplied currencies
-    exchange_rate = api.get_exchange_rate(source, destination)
+    exchange_rate = api.get_exchange_rate(source,
+                                          destination)
     # Convert the data
     print(f"{helper.blue_text}Writing converted data to file...\
 {helper.white_text}")
@@ -242,7 +249,9 @@ Aborting conversion.{helper.white_text}")
         # Add the converted data to the array of new data
         converted_data_arr.append(converted_data)
     # Add the new column to the CSV and save it
-    helper.add_csv_column(filename, destination, converted_data_arr)
+    helper.add_csv_column(filename,
+                          destination,
+                          converted_data_arr)
     print(f"{helper.blue_text}File updated:{helper.white_text}")
     # Display the first 5 rows of the CSV after the update
     helper.display_csv(filename)
@@ -305,7 +314,8 @@ def user_menu_choice():
             prompt_message = [
                 ('class:prompt_user', "Choice: ")
             ]
-            user_input = prompt(prompt_message, style=prompt_style)
+            user_input = prompt(prompt_message,
+                                style=prompt_style)
 
             # Check if input is numerical
             if user_input.isdigit():
