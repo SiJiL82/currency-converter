@@ -22,8 +22,7 @@ def press_enter_to_continue():
     Makes it easier for user to see text returned by their operation.
     """
     while True:
-        # input(f"{helper.blue_text}Press Enter to go back to the main menu.\n")
-        input(f"{helper.blue_style}Press Enter to go back to the main menu.\n")
+        input(f"{helper.blue_text}Press Enter to go back to the main menu.\n")
         break
     ui()
 

@@ -4,11 +4,9 @@ from colorama import init, Fore, Back, Style
 init(autoreset=True)
 
 # Colour Variables
-green_text = "\033[1;92;40m"
-white_text = "\033[0;37;40m"
-blue_text = "\033[1;34;40m"
-
-blue_style = Fore.RED + Back.RESET + Style.BRIGHT
+green_text = Fore.GREEN + Back.RESET + Style.NORMAL
+white_text = Fore.RESET + Back.RESET + Style.NORMAL
+blue_text = Fore.BLUE + Back.RESET + Style.BRIGHT
 
 
 def get_max_dict_value_length(dict):
