@@ -1,12 +1,12 @@
 import pandas as pd
-from colored import fg, bg, attr
+from colorama import init, Fore, Back, Style
 
 # Colour Variables
 green_text = "\033[1;92;40m"
 white_text = "\033[0;37;40m"
 blue_text = "\033[1;34;40m"
 
-blue_style = fg("red") + attr("bold") + bg("black")
+blue_style = Fore.BLUE + Back.BLACK + Style.BRIGHT
 
 
 def get_max_dict_value_length(dict):
