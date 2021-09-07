@@ -100,20 +100,27 @@ def view_exchange_rate():
     """
     Get the exchange rate for 2 currencies
     """
+    # Get source currency
     source = prompt_for_currency("Enter source currency: ")
+    # Get destination currency
     destination = prompt_for_currency("Enter destination currency: ")
+    # Get the exchange rate in both directions
     exchange_rate = api.get_exchange_rate(source,
                                           destination)
+    # Get the conversion rate from source > destination
     conversion_rate = api.get_conversion_rate(source,
                                               destination,
                                               exchange_rate)
+    # Display conversion rate from source > destination
     api.display_converted_currency(source,
                                    destination,
                                    1,
                                    conversion_rate)
+    # Get the conversion rate from destination > source
     conversion_rate = api.get_conversion_rate(destination,
                                               source,
                                               exchange_rate)
+    # Display conversion rate from destination > source
     api.display_converted_currency(destination,
                                    source,
                                    1,
