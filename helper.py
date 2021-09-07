@@ -84,6 +84,8 @@ def compare_string_caseinsensitive(string1, string2):
     """
     Compare 2 strings with no case sensitivity
     """
+    # Set both strings to lower case and compare.
+    # Uses casefold rather than lower to support non-English chars
     if string1.casefold() == string2.casefold():
         return True
     else:
