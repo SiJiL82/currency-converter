@@ -30,27 +30,37 @@ def prompt_for_currency(prompt_text):
     """
     Asks the user to choose a currency from the available list.
     """
+    # Set the auto complete list to all keys in the currency list
     key_completer = WordCompleter(list(sorted(api.currency_list_dict.keys())))
     print(f"{helper.blue_text}Start typing to present list of currencies.")
     print(f"{helper.blue_text}Press <TAB> and <ENTER> to select a currency.")
     print(f"{helper.blue_text}Note that all currencies are in UPPERCASE.")
+    # Set prompt message from passed in parameter
     message = [
         ('class:prompt_user', prompt_text)
     ]
+    # Loop until we get a valid input
     while True:
+        # Set user input to uppercase to match currency keys.
+        # Note: this won't show the auto complete but will allow correct
+        # lower case input
         user_input = prompt(message,
                             style=prompt_style,
                             completer=key_completer).upper()
         try:
+            # Check if input exists in currency list
             if api.check_currency_in_list(user_input):
+                # Get the full currency name for the input
                 currency_name = api.currency_list_dict.get(user_input)[
                     'currencyName']
+                # Display chosen currency key and currency name
                 print(f"{helper.green_text}{user_input}{helper.white_text}: \
 {currency_name}")
                 return user_input
             else:
                 raise ValueError
         except ValueError:
+            # Prompt user to enter correct value
             print("Please enter a valid currency code.\n")
 
 
