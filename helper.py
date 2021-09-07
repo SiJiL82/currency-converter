@@ -109,14 +109,17 @@ def is_number(value):
     Check if the supplied value (usually a string)
     can be converted to an int or float
     """
+    # Try converting to a float
     try:
         float(value)
         return True
     except ValueError:
+        # If that fails, try converting to an int
         try:
             int(value)
             return True
         except ValueError:
+            # If that fails, this is not a number
             return False
 
 
