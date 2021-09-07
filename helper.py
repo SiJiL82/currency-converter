@@ -15,7 +15,7 @@ def get_max_dict_value_length(dict):
     """
     # Initialise max to 0
     max = 0
-    # For each key, check if the length of the key is greater than current max
+    # For each key check if the length of the value is greater than current max
     for key in dict:
         if len(dict[key]) > max:
             max = len(dict[key])
@@ -26,7 +26,9 @@ def get_max_dict_key_length(dict):
     """
     Returns the length of the longest key in a dictionary
     """
+    # Initialise max to 0
     max = 0
+    # For each key check if the length of the key is greater than current max
     for key in dict:
         if len(key) > max:
             max = len(key)
