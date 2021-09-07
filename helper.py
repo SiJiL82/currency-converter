@@ -105,7 +105,7 @@ def is_number(value):
             return False
 
 
-def display_csv(file_name):
+def display_csv_header(file_name):
     """
     Use Pandas module to open a CSV and print the contents
     """
