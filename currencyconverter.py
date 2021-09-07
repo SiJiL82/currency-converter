@@ -86,8 +86,22 @@ def view_exchange_rate():
     """
     source = prompt_for_currency("Enter source currency: ")
     destination = prompt_for_currency("Enter destination currency: ")
-    exchange_rate = api.get_exchange_rate(source, destination)
-    api.display_exchange_rate(source, destination, exchange_rate)
+    exchange_rate = api.get_exchange_rate(source,
+                                          destination)
+    conversion_rate = api.get_conversion_rate(source,
+                                              destination,
+                                              exchange_rate)
+    api.display_converted_currency(source,
+                                   destination,
+                                   1,
+                                   conversion_rate)
+    conversion_rate = api.get_conversion_rate(destination,
+                                              source,
+                                              exchange_rate)
+    api.display_converted_currency(destination,
+                                   source,
+                                   1,
+                                   conversion_rate)
     press_enter_to_continue()
 
 
