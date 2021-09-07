@@ -53,7 +53,9 @@ def get_csv_column(file_name, column_name):
     """
     Uses Pandas module to load a CSV and return a specified column as a list
     """
+    # Open CSV
     csv = pd.read_csv(file_name)
+    # Return array of the column specified
     return csv[column_name]
 
 
