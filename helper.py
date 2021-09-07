@@ -127,5 +127,8 @@ def display_csv_header(file_name):
     """
     Use Pandas module to open a CSV and print the contents
     """
+    # Open CSV
     csv = pd.read_csv(file_name)
+    # Display just the header with the default 5 rows in table format
+    # Excluding row numbers
     print(csv.head().to_markdown(index="never"))
