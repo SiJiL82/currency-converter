@@ -74,7 +74,7 @@ def display_currency_list(keylist=None):
     value_length = helper.get_max_dict_subvalue_length(currency_display_list,
                                                        "currencyName")
     key_length = helper.get_max_dict_value_length(currency_display_list)
-    colour_format_length = 20
+    colour_format_length = 29
     column_width = value_length + 2 + key_length + 2 + colour_format_length
 
     # Number of columns to print
