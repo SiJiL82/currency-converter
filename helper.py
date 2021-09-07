@@ -96,6 +96,7 @@ def check_csv_column_exists(file_name, column_name):
     """
     Uses Pandas module to open a CSV and check if supplied column exists
     """
+    # Open CSV
     csv = pd.read_csv(file_name)
     if column_name in csv.columns:
         return True
