@@ -41,7 +41,7 @@ def prompt_for_currency(prompt_text):
     while True:
         user_input = prompt(message,
                             style=prompt_style,
-                            completer=key_completer)
+                            completer=key_completer).upper()
         try:
             if api.check_currency_in_list(user_input):
                 return user_input
