@@ -1,6 +1,8 @@
 import pandas as pd
 from colorama import init, Fore, Back, Style
 
+init(autoreset=True)
+
 # Colour Variables
 green_text = "\033[1;92;40m"
 white_text = "\033[0;37;40m"
