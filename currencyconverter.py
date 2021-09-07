@@ -197,7 +197,7 @@ the data you want to convert: ")
             print(f"{helper.blue_text}Please enter a valid file name, or \
 {helper.white_text}q {helper.blue_text}to cancel")
     # Display the first 5 rows of the CSV before it's updated
-    helper.display_csv(filename)
+    helper.display_csv_header(filename)
     # Prompt user to enter the column to convert
     prompt_message = [
         ('class:prompt_user', "Enter the column header containing \
@@ -282,7 +282,7 @@ Aborting conversion.{helper.white_text}")
                           converted_data_arr)
     print(f"{helper.blue_text}File updated:{helper.white_text}")
     # Display the first 5 rows of the CSV after the update
-    helper.display_csv(filename)
+    helper.display_csv_header(filename)
     # Return to main menu
     press_enter_to_continue()
 
