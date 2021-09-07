@@ -12,3 +12,4 @@ apikey.json
 
 # Local Node.js install
 node_modules/
+package-lock.json
