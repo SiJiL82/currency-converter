@@ -164,9 +164,10 @@ def display_converted_currency(source, destination, amount, amount_converted):
     source_currency_symbol = get_currency_symbol(source)
     destination_currency_symbol = get_currency_symbol(destination)
     # Display to user
-    print(f"{helper.white_text}{source_currency_symbol}{amount} \
-{helper.green_text}{source}{helper.white_text} = {destination_currency_symbol}\
-{amount_converted} {helper.green_text}{destination}{helper.white_text}")
+    print(f"{helper.green_text}{source_currency_symbol}{helper.white_text}{amount} \
+{helper.green_text}{source}{helper.white_text} = {helper.green_text}\
+{destination_currency_symbol}{helper.white_text}{amount_converted} \
+{helper.green_text}{destination}{helper.white_text}")
 
 
 def get_currency_symbol(key):
