@@ -68,7 +68,7 @@ def add_csv_column(file_name, column_name, column_data):
     csv = pd.read_csv(file_name)
     #  Set new column data with header name specified
     csv[column_name] = column_data
-    # Write CSV
+    # Save new data to CSV
     save_csv(file_name, csv)
 
 
@@ -76,6 +76,7 @@ def save_csv(file_name, file):
     """
     Uses Pandas module to save a loaded CSV to file on disk
     """
+    # Write CSV data out
     file.to_csv(file_name, index=False)
 
 
