@@ -44,6 +44,10 @@ def prompt_for_currency(prompt_text):
                             completer=key_completer).upper()
         try:
             if api.check_currency_in_list(user_input):
+                currency_name = api.currency_list_dict.get(user_input)[
+                    'currencyName']
+                print(f"{helper.green_text}{user_input}{helper.white_text}: \
+{currency_name}")
                 return user_input
             else:
                 raise ValueError
