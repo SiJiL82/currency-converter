@@ -81,14 +81,24 @@ Below is a high level overview of the workflow through the application.
     ![Convert Single Value Results](readme-assets/images/convert_value_results.png)  
     - Converted value retains all decimal places from the calculation, so it can be used for an application where precise calculations are critical.  
 - ## Convert Values in File  
+    - Converts a specified column of data in a supplied Comma Separated Value (.csv) file to a destination currency, and appends the data in that currency to the file as a new column.  
     - Prompts the user for:  
         - A .CSV file to read.  
-        - A column in that file with data in to convert.  
-        - Source currency to convert from. If the column header matches a currency, asks the user if they wish to use that, rather than prompt for the currency.  
+            - Displays the column headers and the first 5 rows of data to the user to assist with the following operations.  
+        ![Prompt for CSV File](readme-assets/images/convert_file_filename.png)
+        - A column in that file with data in to convert. 
+            - If the column header matches a currency, asks the user if they wish to use that, rather than prompt for the currency in the next step.  
+            ![Prompt For Column Name](readme-assets/images/convert_file_column_name_match.png) 
+        - Source currency to convert from if not set from file.  
+        ![Prompt For Source Currency](readme-assets/images/convert_file_select_column.png)
         - Destination currency to convert to.  
-    ![Convert Values in File](readme-assets/images/convert_file_process.png)
-    - The data in the supplied column is converted to the destination currency, and the new data is appended to the file as a new column.  
-        - A sample `car_prices.csv` file is included with this project that can be used to test the process.
+        ![Prompt For Destination Currency](readme-assets/images/convert_file_destination.png)
+        - The data in the supplied column is converted to the destination currency, and the new data is appended to the file as a new column.  
+            - The first 5 rows of data with the new column are shown to the user as confirmation that the operation has succeeded.  
+            ![File Conversion Complete](readme-assets/images/convert_file_complete.png)
+            - If the destination currency name matches an existing column name, the user is prompted to enter a new column name to use, to prevent data being overwritten.  
+            ![New Column Name Specified](readme-assets/images/convert_file_new_column_name.png)
+    - A sample `car_prices.csv` file is included with this project that can be used to test the process. Simply enter "car_prices.csv" as the file name when prompted.  
         - Source data:  
         ![File Conversion Before](readme-assets/images/file_conversion_before.png)
         - After column has been converted and new data saved to file:  
