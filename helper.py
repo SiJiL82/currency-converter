@@ -103,3 +103,11 @@ def is_number(value):
             return True
         except ValueError:
             return False
+
+
+def display_csv(file_name):
+    """
+    Use Pandas module to open a CSV and print the contents
+    """
+    csv = pd.read_csv(file_name)
+    print(csv)
