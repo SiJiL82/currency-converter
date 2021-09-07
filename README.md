@@ -40,7 +40,6 @@ Below is a high level overview of the workflow through the application.
 - ## User Menu
     - Options presented to user allowing them to control the program flow.  
     - Created dynamically from an array of objects defining the actions, making it easy to expand.  
-        - Several screenshots in this readme were taken before the "Search for a currency" option was added, showing that it was simple to add this additional option in.
     - The "Quit" option is automatically appended to the end of the list.  
     - Colour formatting makes the menu clear to users.  
     - Validation ensures only numerical values from the list can be chosen.  
