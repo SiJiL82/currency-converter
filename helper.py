@@ -39,7 +39,9 @@ def get_max_dict_subvalue_length(dict, key_name):
     """
     Returns the length of a the longest specified sub key in a dictionary
     """
+    # Initialise max to 0
     max = 0
+    # For each key check if length of specified sub key is greater than max
     for key in dict:
         length = len(dict.get(key)[key_name])
         if length > max:
