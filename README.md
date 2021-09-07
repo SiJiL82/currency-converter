@@ -1,12 +1,8 @@
 # Currency Converter
 
-This project is a Python command line application that can convert numerical values between different currencies.  
+This project is a Python command line application that gives the user options to view and use currency conversion rates.
 
 The application can be used in a web browser at [Heroku Deployment](https://currency-converter-sijil82.herokuapp.com/)
-**Note:** Due to limitations within the terminal template used to deploy the application as a web page, some parts of the application do not function as intended:
-- The autocomplete functionality does not load. This is purely cosmetic, and the user can type out the currency name manually.
-- Because the terminal does not have access to the underlying VM and file structure, the option to load a file cannot function.
-- For full functionality, it is recommended to clone the project and run the application locally by following the steps in the Deployment section.  
 
 ## Table of Contents
 * [Design](#design)
@@ -91,7 +87,6 @@ Below is a high level overview of the workflow through the application.
     ![Convert Values in File](readme-assets/images/convert_file_process.png)
     - The data in the supplied column is converted to the destination currency, and the new data is appended to the file as a new column.  
         - A sample `car_prices.csv` file is included with this project that can be used to test the process.
-            -  
         - Source data:  
         ![File Conversion Before](readme-assets/images/file_conversion_before.png)
         - After column has been converted and new data saved to file:  
@@ -139,6 +134,15 @@ Below is a high level overview of the workflow through the application.
     - **Note:** This project requires you to have [Python](https://www.python.org/) installed on your local PC.
     - Go to the [GitHub Repo](https://github.com/SiJiL82/currency-converter) page.
     - Click the `Code` button and download the ZIP file containing the project.
+
+INSERT HERE:
+Git Clone Command
+Install dependencies:
+    pip3 install -r > requirements.txt
+How to deploy to Heroku
+
+
+
     - Extract the ZIP file to a location on your PC.
     - Generate an API Key at [Currency Converter API](https://free.currencyconverterapi.com/)
     - In the folder you extracted the project files to, create an `env.py` file, and add the lines below:
