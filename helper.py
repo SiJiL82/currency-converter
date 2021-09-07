@@ -110,4 +110,4 @@ def display_csv(file_name):
     Use Pandas module to open a CSV and print the contents
     """
     csv = pd.read_csv(file_name)
-    print(csv)
+    print(csv.head().to_markdown(index="never"))
