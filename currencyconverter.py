@@ -79,13 +79,18 @@ def search_currencies():
     Search the currency names and display all results that match
     provided search term
     """
+    # Set user prompt message
     prompt_message = [
         ('class:prompt_user', "Enter search term, for example country name\n\
 or common currency denomination (e.g.: 'Pound'): ")
     ]
+    # Get user input.
+    # No validation needed, user can enter whatever they like
     user_input = prompt(prompt_message,
                         style=prompt_style)
+    # Get array of keys with values that contain the search term
     keylist = api.search_currency_name(user_input)
+    # Display list of currencies from returned keys
     print(f"{helper.blue_text}Matching results:")
     api.display_currency_list(keylist)
     press_enter_to_continue()
