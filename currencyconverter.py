@@ -132,14 +132,18 @@ def convert_single_value():
     """
     Converts a single numerical value from one currency to another
     """
+    # Get source currency
     source = prompt_for_currency("Enter source currency: ")
+    # Get destination currency
     destination = prompt_for_currency("Enter destination currency: ")
+    # Get exchange rate in both directions
     exchange_rate = api.get_exchange_rate(source,
                                           destination)
-
+    # Set user prompt message
     prompt_message = [
         ('class:prompt_user', "Enter value to convert: ")
     ]
+    # Loop until we get a valid numerical input
     while True:
         user_input = prompt(prompt_message,
                             style=prompt_style)
@@ -150,11 +154,13 @@ def convert_single_value():
             else:
                 raise ValueError()
         except ValueError:
-            print("Please enter a valid currency value to convert.")
+            print("Please enter a valid numerical value to convert.")
+    # Get input converted to destination currency            
     converted_amount = api.convert_currency(source,
                                             destination,
                                             convert_amount,
                                             exchange_rate)
+    # Display converted amount
     api.display_converted_currency(source,
                                    destination,
                                    convert_amount,
