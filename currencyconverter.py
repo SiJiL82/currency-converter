@@ -276,9 +276,19 @@ Aborting conversion.{helper.white_text}")
                                               exchange_rate)
         # Add the converted data to the array of new data
         converted_data_arr.append(converted_data)
+    # Set new column name to destination currency key
+    new_col_name = destination
+    # Check if a column already exists with this header
+    # Set a new column name if it does
+    if helper.check_csv_column_exists(filename,
+                                      new_col_name):
+        prompt_message = [('class:prompt_user', "Column with that name already \
+exists. Enter a new column name: ")]
+        new_col_name = prompt(prompt_message,
+                              style=prompt_style)
     # Add the new column to the CSV and save it
     helper.add_csv_column(filename,
-                          destination,
+                          new_col_name,
                           converted_data_arr)
     print(f"{helper.blue_text}File updated:{helper.white_text}")
     # Display the first 5 rows of the CSV after the update
