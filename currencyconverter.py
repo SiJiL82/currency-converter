@@ -90,9 +90,13 @@ or common currency denomination (e.g.: 'Pound'): ")
                         style=prompt_style)
     # Get array of keys with values that contain the search term
     keylist = api.search_currency_name(user_input)
-    # Display list of currencies from returned keys
-    print(f"{helper.blue_text}Matching results:")
-    api.display_currency_list(keylist)
+    # Check if any results were returned
+    if len(keylist) > 0:
+        # Display list of currencies from returned keys
+        print(f"{helper.blue_text}Matching results:")
+        api.display_currency_list(keylist)
+    else:
+        print(f"{helper.blue_text}No results found")
     press_enter_to_continue()
 
 
