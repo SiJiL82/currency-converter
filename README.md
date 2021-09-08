@@ -143,21 +143,22 @@ Below is a high level overview of the workflow through the application.
 - Providing a file to convert with data that isn't numerical will abort the conversion:  
 ![Invalid File Data](readme-assets/images/testing_invalid_file_data.png)
 # Deployment
+- Generate an API Key at [Currency Converter API](https://free.currencyconverterapi.com/)
+    - Both deployment methods below will require this API Key
 - __To deploy the project as an application that can be run locally:__
     - **Note:** This project requires you to have [Python](https://www.python.org/) installed on your local PC.
-    - Go to the [GitHub Repo](https://github.com/SiJiL82/currency-converter) page.
-    - Click the `Code` button and download the ZIP file containing the project.
-
-INSERT HERE:
-Git Clone Command
-Install dependencies:
-    pip3 install -r > requirements.txt
-How to deploy to Heroku
-
-
-
-    - Extract the ZIP file to a location on your PC.
-    - Generate an API Key at [Currency Converter API](https://free.currencyconverterapi.com/)
+        - You will also need [pip](https://pip.pypa.io/en/stable/installation/) installed to allow installation of modules the application uses.  
+    - Create a local copy of the GitHub repository, by following one of the 2 processes below:
+        - Download code:
+            - Go to the [GitHub Repo](https://github.com/SiJiL82/currency-converter) page.
+            - Click the `Code` button and download the ZIP file containing the project.
+            - Extract the ZIP file to a location on your PC.
+        - Clone the repository:
+            - Open a terminal to the location you wish to run the application from.
+            - Run the command `git clone https://github.com/SiJiL82/currency-converter.git`
+    - Install Python module dependencies:
+        - Open a terminal to the folder you have copied the code to.
+        - Run the command `pip install -r requirements.txt`
     - In the folder you extracted the project files to, create an `env.py` file, and add the lines below:
         - `SERVER TYPE` should be replaced with the API key type you have chosen, from: `Free`, `Premium`, `Prepaid`  
     ```python
@@ -166,10 +167,35 @@ How to deploy to Heroku
     os.environ.setdefault("APITYPE", "SERVER TYPE")
     ```
     - Open a terminal window to the location you extracted the files to, and run:  
-    `python currencyconverter.py`
+    `python currencyconverter.py`  
+- __To deploy the project to Heroku so it can be run as a remote web application:__
+    - Clone the repository:
+        - Open a terminal to the location you wish to run the application from.
+        - Run the command `git clone https://github.com/SiJiL82/currency-converter.git`
+    - Create your own GitHub repository to host the code.
+    - Run the command `git remote set-url origin <Your GitHub Repo Path>` to set the remote repository location to your repository.
+    - Push the files to your repository with `git push`
+    - Create a [Heroku](https://www.heroku.com) account if you don't already have one.
+    - Create a new Heroku application
+    - Go to the Deploy tab:
+        - Link your GitHub account.
+        - Connect the application to the repository you created.
+    - Go to the Settings tab:
+        - Click "Add buildpack"
+            - Add the Python and Node.js buildpacks
+            - Ensure that the Python buildpack is first in the list:  
+            ![Heroku Buildpack Order](readme-assets/images/deploy_heroku_buildpacks.png)
+        - Click "Reveal Config Vars"
+            - Add 2 new Config Vars:
+                - Key: `APIKEY` Value: `API Key generated earlier`
+                - Key: `APITYPE` Value: `API Type chosen when generating key, from: 'Free', 'Premium', 'Prepaid'`
+    - Go back to the Deploy tab:
+        - Click "Deploy Branch"
+        - Monitor the build logs for completion of the deployment.
+    - Click "Open app" to launch the application inside a web page.  
 # Credits
 - __The following resources were referenced during the development of this project:__
-    - Adding colour formatting: [OzzMaker.com](https://ozzmaker.com/add-colour-to-text-in-python/)
+    - Adding colour formatting: [OzzMaker.com](https://ozzmaker.com/add-colour-to-text-in-python/) 
     - Auto complete prompting: [Python Prompt Toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input)
     - Exchange rates API: [CurrencyConverterAPI.com](https://free.currencyconverterapi.com/)
     - CSV loading and manipluation: [Pandas Library](https://pandas.pydata.org/)
