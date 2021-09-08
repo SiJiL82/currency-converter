@@ -12,6 +12,7 @@ The application can be used in a web browser at [Heroku Deployment](https://curr
     * [User Menu](#user-menu)
     * [Up to Date Data](#up-to-date-data)
     * [View All Currencies](#view-all-currencies)
+    * [Search For A Currency](#search-for-a-currency)
     * [View a Currency Conversion Rate](#view-a-currency-conversion-rate)
     * [Convert a Single Value](#convert-a-single-value)
     * [Convert Values in File](#convert-values-in-file)
@@ -195,7 +196,8 @@ Below is a high level overview of the workflow through the application.
     - Click "Open app" to launch the application inside a web page.  
 # Credits
 - __The following resources were referenced during the development of this project:__
-    - Adding colour formatting: [OzzMaker.com](https://ozzmaker.com/add-colour-to-text-in-python/) 
+    - Colour formatting: [Colorama](https://pypi.org/project/colorama/)
+        - Initial colour formatting not used in final build: [OzzMaker.com](https://ozzmaker.com/add-colour-to-text-in-python/)
     - Auto complete prompting: [Python Prompt Toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input)
     - Exchange rates API: [CurrencyConverterAPI.com](https://free.currencyconverterapi.com/)
     - CSV loading and manipluation: [Pandas Library](https://pandas.pydata.org/)
