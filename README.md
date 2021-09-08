@@ -139,7 +139,6 @@ Below is a high level overview of the workflow through the application.
 - Entering a filename with an extension that isn't .csv prompts the user to enter a valid file:  
 ![Invalid File Extension](readme-assets/images/testing_invalid_extension.png)
 - Providing a file to convert with data that isn't numerical will abort the conversion:  
-![Invalid File Data Example](readme-assets/images/testing_file_with_invalid_data.png)  
 ![Invalid File Data](readme-assets/images/testing_invalid_file_data.png)
 # Deployment
 - __To deploy the project as an application that can be run locally:__
