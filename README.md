@@ -56,7 +56,7 @@ Below is a high level overview of the workflow through the application.
         ![Currency List - xTerm](readme-assets/images/currency_list_xterm.png)
         - Default Windows 10 Terminal (120 characters wide):  
         ![Currency List - Windows 10 Terminal](readme-assets/images/currency_list_win10_term.png)
-        - Windows 10 Terminal fullscreen (423 characters wide):  
+        - Windows 10 Terminal full screen (423 characters wide):  
         ![Currency List - Windows 10 Full Screen](readme-assets/images/currency_list_win10_term_fullscreen.png)
 - ## Search for a Currency
     - Prompts the user to enter a search term, and then returns all currencies where the currency name contains that term.
@@ -200,4 +200,4 @@ Below is a high level overview of the workflow through the application.
         - Initial colour formatting not used in final build: [OzzMaker.com](https://ozzmaker.com/add-colour-to-text-in-python/)
     - Auto complete prompting: [Python Prompt Toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/pages/asking_for_input.html#asking-for-input)
     - Exchange rates API: [CurrencyConverterAPI.com](https://free.currencyconverterapi.com/)
-    - CSV loading and manipluation: [Pandas Library](https://pandas.pydata.org/)
+    - CSV loading and manipulation: [Pandas Library](https://pandas.pydata.org/)
