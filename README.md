@@ -85,7 +85,9 @@ Below is a high level overview of the workflow through the application.
     - Prompts the user for:  
         - A .CSV file to read.  
             - Displays the column headers and the first 5 rows of data to the user to assist with the following operations.  
-        ![Prompt for CSV File](readme-assets/images/convert_file_filename.png)
+            ![Prompt for CSV File](readme-assets/images/convert_file_filename.png)
+            - The file path can be relative to the program directory (as above) or an absolute path in another location  
+            ![Open Absolute File Path](readme-assets/images/convert_file_absolute_path.png)
         - A column in that file with data in to convert. 
             - If the column header matches a currency, asks the user if they wish to use that, rather than prompt for the currency in the next step.  
             ![Prompt For Column Name](readme-assets/images/convert_file_column_name_match.png) 
