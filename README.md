@@ -134,6 +134,8 @@ Below is a high level overview of the workflow through the application.
     ![Invalid Menu Number Choice](readme-assets/images/testing_invalid_numerical_menu_choice.png)
     - Invalid alphabetical value entered:  
     ![Invalid Menu String Choice](readme-assets/images/testing_invalid_string_menu_choice.png)
+- Searching for a currency where no results are found, or not entering a search term displays a message stating no results were found:  
+![No Search Results Found](readme-assets/images/testing_no_search_results.png)
 - Entering an input that doesn't match an available currency code prompts the user to enter a valid one:  
 ![Invalid Currency Code](readme-assets/images/testing_invalid_currency.png)
 - Entering a non-numerical value to convert prompts the user to enter a valid value:  
