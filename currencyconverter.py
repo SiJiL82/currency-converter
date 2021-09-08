@@ -31,10 +31,11 @@ def prompt_for_currency(prompt_text):
     Asks the user to choose a currency from the available list.
     """
     # Set the auto complete list to all keys in the currency list
-    key_completer = WordCompleter(list(sorted(api.currency_list_dict.keys())))
+    keylist_upper = (sorted(api.currency_list_dict.keys()))
+    keylist_lower = [key.lower() for key in keylist_upper]
+    key_completer = WordCompleter(list(keylist_upper + keylist_lower))
     print(f"{helper.blue_text}Start typing to present list of currencies.")
     print(f"{helper.blue_text}Press <TAB> and <ENTER> to select a currency.")
-    print(f"{helper.blue_text}Note that all currencies are in UPPERCASE.")
     # Set prompt message from passed in parameter
     message = [
         ('class:prompt_user', prompt_text)
